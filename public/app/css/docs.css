@@ -1,0 +1,23 @@
+.sample-icon-list {
+
+}
+
+.sample-icon {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.sample-icon a {
+	color: #333;
+	text-decoration: none;
+}
+
+.sample-icon a i {
+	margin-right: 10px;
+	margin-left: 30px;
+	width: 20px;
+}
+
+.row-demo {
+	margin-bottom: 20px;
+}
