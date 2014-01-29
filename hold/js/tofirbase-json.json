@@ -1,0 +1,155 @@
+{
+	"exhibitors" : {
+		"exhibitor1":{
+			"company":"ADSB","committed":"0","contract":"0","forcast_revenue":"5000.00","payment":"0","payment_method":null,"deposit_due":null,"amount_paid":null,"total_due":null,"plevel_proposed":"bronze, platinum","plevel":null,"booth":null,"speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:27:48","contacts":[]
+			},
+		"exhibitor2":{ 
+			"company":"All Weather Inc.",
+			"committed":"1",
+			"contract":"1",
+			"forcast_revenue":"2200.00",
+			"payment":"1",
+			"payment_method":"2 Pending Invoices Will pay by check for deposit then balance.",
+			"deposit_due":"1100.00",
+			"amount_paid":"0.00",
+			"total_due":"2200.00",
+			"plevel_proposed":"Exhibitor",
+			"plevel":"Exhibitor",
+			"booth":"1",
+			"speaker_time":"0.5",
+			"phone":"1-800-824-5873",
+			"address":"1165 National Drive",
+			"address2":"",
+			"city":"Sacramento",
+			"state":"CA",
+			"zip":"95834",
+			"country":"USA",
+			"todos":"",
+			"notes":"",
+			"created_at":"2014-01-25 03:07:06",
+			"updated_at":"2014-01-26 22:55:24",
+			"contacts":{
+					"contact1":{
+						"exhibitor_id":"2",
+						"category_id":"3",
+						"primary":"1",
+						"financial":"1",
+						"first":"Laura",
+						"last":"Ball",
+						"title":"Sales Coordinator",
+						"office":"800-824-5873",
+						"mobile":"916-926-6745",
+						"fax":"916-928-1165",
+						"email":"lball@allweather.com",
+						"company":"All Weather, Inc.",
+						"address":"1165 National Drive",
+						"address2":"",
+						"city":"Sacramento",
+						"state":"CA",
+						"zip":"95834",
+						"country":"USA",
+						"created_at":"2014-01-25 00:00:00",
+						"updated_at":"0000-00-00 00:00:00"
+					},
+					"contact2": {"exhibitor_id":"2","category_id":"3","primary":"0","financial":"0","first":"Steven","last":"Ball","title":"Sales Coordinator","office":"800-824-5873","mobile":"916-926-6745","fax":"916-928-1165","email":"lball@allweather.com","company":"All Weather, Inc.","address":"1165 National Drive","address2":"","city":"Sacramento","state":"CA","zip":"95834","country":"USA","created_at":"2014-01-25 00:00:00","updated_at":"0000-00-00 00:00:00"}
+			}
+			},
+		"exhibitor3":{
+			"company":"ATAC","committed":"1","contract":"1","forcast_revenue":"5000.00","payment":"2","payment_method":"cc-11000","deposit_due":"0.00","amount_paid":"1100.00","total_due":"3900.00","plevel_proposed":"Bronze","plevel":"Bronze","booth":"10","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:27:45","contacts":[]
+			},
+		"exhibitor4":{
+			"company":"Aydin","committed":"1","contract":"1","forcast_revenue":"0.00","payment":"2","payment_method":"cc - 3001","deposit_due":"0.00","amount_paid":"1100.00","total_due":"3900.00","plevel_proposed":"Bronze","plevel":"Bronze","booth":"25","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:27:50","contacts":[]
+			},
+		"exhibitor5":{
+			"company":"BCBS","committed":"1","contract":"1","forcast_revenue":"10000.00","payment":"1","payment_method":null,"deposit_due":"2000.00","amount_paid":"0.00","total_due":"10000.00","plevel_proposed":"Silver","plevel":"Silver","booth":"35","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:27:52","contacts":[]
+			},
+		"exhibitor6":{
+			"company":"Eizo","committed":"1","contract":"1","forcast_revenue":"2200.00","payment":"1","payment_method":"cc - in april 2014\r\n","deposit_due":"1100.00","amount_paid":"0.00","total_due":"2200.00","plevel_proposed":"Bronze","plevel":"Exhibitor","booth":"14","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:27:53","contacts":[]
+			},
+		"exhibitor7":{
+			"company":"Evans","committed":"1","contract":"0","forcast_revenue":"10000.00","payment":"1","payment_method":null,"deposit_due":"1100.00","amount_paid":"0.00","total_due":"10000.00","plevel_proposed":"Silver","plevel":"Silver","booth":"5","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:27:55","contacts":[]
+			},
+		"exhibitor8":{
+			"company":"FEDS","committed":"1","contract":"1","forcast_revenue":"2200.00","payment":"1","payment_method":"Bill","deposit_due":"1100.00","amount_paid":"0.00","total_due":"2200.00","plevel_proposed":"Exhibitor","plevel":"Exhibitor","booth":"4","speaker_time":"","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"0000-00-00 00:00:00","contacts":[]
+			},
+		"exhibitor9":{
+			"company":"FEEA","committed":"1","contract":"1","forcast_revenue":null,"payment":"2","payment_method":"Comp","deposit_due":null,"amount_paid":null,"total_due":null,"plevel_proposed":"Exhibitor","plevel":"Exhibitor","booth":"11","speaker_time":"","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"0000-00-00 00:00:00","contacts":[]
+			},
+		"exhibitor10":{
+			"company":"First Command","committed":"1","contract":"1","forcast_revenue":"5000.00","payment":"0","payment_method":"No Payment Recieved","deposit_due":"1100.00","amount_paid":"0.00","total_due":"2200.00","plevel_proposed":"Bronze, Silver, Gold, Platinum","plevel":null,"booth":"9","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:28:07","contacts":[]
+			},
+		"exhibitor11":{
+			"company":"Geico","committed":"1","contract":"1","forcast_revenue":"20000.00","payment":"2","payment_method":"Contract","deposit_due":"0.00","amount_paid":"0.00","total_due":"20000.00","plevel_proposed":null,"plevel":"Platinum","booth":"23","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:28:10","contacts":[]
+			},
+		"exhibitor12":{
+			"company":"Golden Key Group","committed":"0","contract":"0","forcast_revenue":"2200.00","payment":"0","payment_method":"No Payment Recieved","deposit_due":"1100.00","amount_paid":"0.00","total_due":"2200.00","plevel_proposed":"Bronze, Silver","plevel":null,"booth":"17","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:28:12","contacts":[]
+			},
+		"exhibitor13":{
+			"company":"Harris","committed":"1","contract":"0","forcast_revenue":"10000.00","payment":"0","payment_method":"No Payment Recieved","deposit_due":"2000.00","amount_paid":"0.00","total_due":"10000.00","plevel_proposed":"Silver","plevel":"Silver","booth":null,"speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:28:14","contacts":[]
+			},
+		"exhibitor14":{
+			"company":"IHC Financial","committed":"1","contract":"1","forcast_revenue":"2200.00","payment":"2","payment_method":"cc - 3002","deposit_due":"0.00","amount_paid":"1100.00","total_due":"1100.00","plevel_proposed":"Exhibitor","plevel":"Exhibitor","booth":"20","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:28:15","contacts":[]
+			},
+		"exhibitor15":{
+			"company":"L3 Communications","committed":"0","contract":"0","forcast_revenue":"5000.00","payment":"0","payment_method":null,"deposit_due":null,"amount_paid":null,"total_due":null,"plevel_proposed":"Bronze, Silver, Gold, Platinum","plevel":null,"booth":null,"speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:28:17","contacts":[]
+			},
+		"exhibitor16":{
+			"company":"Livingston","committed":"1","contract":"0","forcast_revenue":"10000.00","payment":"1","payment_method":"No Payment Recieved","deposit_due":"1100.00","amount_paid":"0.00","total_due":"10000.00","plevel_proposed":"Silver, Gold, Platinum","plevel":"Silver","booth":"24","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:27:59","contacts":[]
+			},
+		"exhibitor17":{
+			"company":"Long Term Care Partners","committed":"0","contract":"0","forcast_revenue":"2200.00","payment":"0","payment_method":null,"deposit_due":"1100.00","amount_paid":"0.00","total_due":"2200.00","plevel_proposed":"Bronze, Silver, Gold, Platinum","plevel":"Exhibitor","booth":null,"speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:28:19","contacts":[]
+			},
+		"exhibitor18":{
+			"company":"Mitre Corp","committed":"1","contract":"1","forcast_revenue":"2200.00","payment":"1","payment_method":"Invoice","deposit_due":"1100.00","amount_paid":"0.00","total_due":"2200.00","plevel_proposed":null,"plevel":"Exhibitor","booth":"18","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:28:21","contacts":[]
+			},
+		"exhibitor19":{
+			"company":"Mosaic ATM","committed":"1","contract":"1","forcast_revenue":"5000.00","payment":"2","payment_method":"cc - 1626","deposit_due":"0.00","amount_paid":"1100.00","total_due":"3900.00","plevel_proposed":"Bronze","plevel":"Bronze","booth":"29","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:29:19","contacts":[]
+			},
+		"exhibitor20":{
+			"company":"Nav Can ATM","committed":"1","contract":"1","forcast_revenue":"15000.00","payment":"2","payment_method":"cc","deposit_due":"0.00","amount_paid":"2000.00","total_due":"13000.00","plevel_proposed":"Silver, Gold, Platinum","plevel":"Gold","booth":"32","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:07","contacts":[]
+			},
+		"exhibitor21":{
+			"company":"Pentagon 2000 Software","committed":"0","contract":"0","forcast_revenue":"5000.00","payment":"0","payment_method":null,"deposit_due":null,"amount_paid":null,"total_due":null,"plevel_proposed":"Bronze","plevel":null,"booth":null,"speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:09","contacts":[]
+			},
+		"exhibitor22":{
+			"company":"Plantronics","committed":"1","contract":"1","forcast_revenue":"5000.00","payment":"2","payment_method":"cc - 9999","deposit_due":"0.00","amount_paid":"1100.00","total_due":"1100.00","plevel_proposed":"Bronze","plevel":"Exhibitor","booth":"21","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:11","contacts":[]
+			},
+		"exhibitor23":{
+			"company":"Raytheon","committed":"1","contract":"0","forcast_revenue":"2500.00","payment":"0","payment_method":null,"deposit_due":null,"amount_paid":null,"total_due":null,"plevel_proposed":"Bronze","plevel":null,"booth":null,"speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:12","contacts":[]
+			},
+		"exhibitor24":{
+			"company":"Russ Bassett","committed":"1","contract":"1","forcast_revenue":"5000.00","payment":"1","payment_method":"Invoice","deposit_due":"2000.00","amount_paid":"0.00","total_due":"5000.00","plevel_proposed":"Bronze","plevel":"Bronze","booth":"36","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:15","contacts":[]
+			},
+		"exhibitor25":{
+			"company":"Salex System Integrations","committed":"0","contract":"0","forcast_revenue":"5000.00","payment":"0","payment_method":null,"deposit_due":null,"amount_paid":null,"total_due":null,"plevel_proposed":"Bronze, Silver, Gold","plevel":null,"booth":null,"speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:18","contacts":[]
+			},
+		"exhibitor26":{
+			"company":"Sky One Federal Credit Union","committed":"0","contract":"0","forcast_revenue":"2500.00","payment":"0","payment_method":null,"deposit_due":null,"amount_paid":null,"total_due":null,"plevel_proposed":"Bronze, Silver, Gold","plevel":null,"booth":null,"speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:20","contacts":[]
+			},
+		"exhibitor27":{
+			"company":"Snow Federal","committed":"0","contract":"0","forcast_revenue":"2200.00","payment":"0","payment_method":null,"deposit_due":null,"amount_paid":null,"total_due":null,"plevel_proposed":"Bronze, Silver, Gold","plevel":null,"booth":null,"speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:22","contacts":[]
+			},
+		"exhibitor28":{
+			"company":"Sunhillo","committed":"1","contract":"1","forcast_revenue":"5000.00","payment":"2","payment_method":"cc - 0098","deposit_due":"0.00","amount_paid":"1100.00","total_due":"3900.00","plevel_proposed":"Bronze, Silver, Gold","plevel":"Bronze","booth":"22","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:24","contacts":[]
+			},
+		"exhibitor29":{
+			"company":"Systems Atlanta","committed":"1","contract":"1","forcast_revenue":"2200.00","payment":"1","payment_method":"Check on jan 15, 2014","deposit_due":"1100.00","amount_paid":"0.00","total_due":"2200.00","plevel_proposed":"Bronze, Silver, Gold","plevel":"Exhibitor","booth":"7","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:25","contacts":[]
+			},
+		"exhibitor30":{
+			"company":"Thales","committed":"1","contract":"0","forcast_revenue":"2200.00","payment":"0","payment_method":"No Payment Recieved","deposit_due":"1100.00","amount_paid":"0.00","total_due":"2200.00","plevel_proposed":"Bronze, Silver, Gold","plevel":"Exhibitor","booth":"16","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:28","contacts":[]
+			},
+		"exhibitor31":{
+			"company":"UCM","committed":"1","contract":"1","forcast_revenue":"5000.00","payment":"2","payment_method":"cc - 71025","deposit_due":"0.00","amount_paid":"1100.00","total_due":"3900.00","plevel_proposed":"Bronze, Silver, Gold","plevel":"Bronze","booth":"15","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:30","contacts":[]
+			},
+		"exhibitor32":{
+			"company":"WAEPA","committed":"1","contract":"1","forcast_revenue":"5000.00","payment":"0","payment_method":"No Payment Recieved","deposit_due":"1100.00","amount_paid":"0.00","total_due":"5000.00","plevel_proposed":"Bronze, Silver, Gold","plevel":"Exhibitor","booth":"28","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:36","contacts":[]
+			},
+		"exhibitor33":{
+			"company":"Wide","committed":"1","contract":"1","forcast_revenue":"10000.00","payment":"0","payment_method":"No Payment Recieved","deposit_due":"1100.00","amount_paid":"0.00","total_due":"10000.00","plevel_proposed":"Bronze, Silver, Gold","plevel":"Exhibitor","booth":"30","speaker_time":"0","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-25 03:07:06","updated_at":"2014-01-26 05:32:40","contacts":[]
+			},
+		"exhibitor35":{
+			"company":"1","committed":"0","contract":"0","forcast_revenue":null,"payment":"0","payment_method":null,"deposit_due":null,"amount_paid":null,"total_due":null,"plevel_proposed":null,"plevel":null,"booth":null,"speaker_time":"","phone":"","address":"","address2":"","city":"","state":"","zip":"","country":"","todos":"","notes":"","created_at":"2014-01-26 04:58:00","updated_at":"0000-00-00 00:00:00","contacts":[]
+		}
+		
+	}
+}

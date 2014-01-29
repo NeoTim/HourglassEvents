@@ -1,0 +1,71 @@
+<span class="align-center">
+	<h1>{{title}}</h1>
+</span>
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		<div class="col-xs-6">
+			<div class="input-group col-md-6">
+				<div class="input-group-btn">
+					<button class="btn btn-primary"><i class="fa fa-search"></i></button>
+				</div>
+				<input type="text" class="form-control" ng-model="filterOptions.filterText" placeholder="Search..." />
+			</div>
+		</div>
+
+		<div class="col-xs-6">
+			<a id="" href="orders/create" class="btn btn-primary aligncenter pull-right">Add Exhibitor</a>
+		</div>
+	</div>
+</div>
+<br />
+<div class="col-md-12">
+	<div class="gridStyle" ng-grid="gridOptions"></div>
+</div>
+
+
+<!-- 
+<table class="table table-bordered table-striped  table-hover table-full-width dataTable" d="sample_editable_1" aria-describedby="sample_1_info">
+	<thead>		
+		<tr>
+			<th>Options</th>
+			<th>ID</th>
+			<th>Company</th>
+			<th>Committed</th>
+			<th>Contract</th>
+			<th>Forcast Revenue</th>
+			<th>Payment</th>
+			<th>Payment Method</th>
+			<th>Deposit Due</th>
+			<th>Total Due</th>
+			<th>Amount Paid</th>
+			<th>Partner Level Proposed</th>
+			<th>Partner Level</th>
+			<th>Booth #</th>
+		</tr>
+	</thead>
+	<tbody class="exhibitors">
+		<tr ng-repeat="exhibitor in exhibitors">
+			<td>
+				<div class="btn-group">
+					<button class="btn btn-default" ng-click=""><i class="fa fa-edit"></i></button>
+					<button class="btn btn-danger" ng-click=""><i class="fa fa-trash-o"></i></button>
+				</div>
+			</td>
+			<td>{{exhibitor.id}}</td>
+			<td>{{exhibitor.company}}</td>
+			<td>{{exhibitor.committed}}</td>
+			<td>{{exhibitor.contract}}</td>
+			<td>{{exhibitor.forcast_revenue}}</td>
+			<td>{{exhibitor.payment}}</td>
+			<td>{{exhibitor.payment_method}}</td>
+			<td>{{exhibitor.deposy_due}}</td>
+			<td>{{exhibitor.total_due}}</td>
+			<td>{{exhibitor.amount_paid}}</td>
+			<td>{{exhibitor.plevel_proposed}}</td>
+			<td>{{exhibitor.plevel}}</td>
+			<td>{{exhibitor.booth}}</td>
+		</tr>
+	</tbody>
+</table>
+ -->

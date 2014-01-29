@@ -1,0 +1,54 @@
+<span class="align-center">
+	<h1>{{title}}</h1>
+</span>
+<hr>
+<div class="row">
+	<div class="col-md-6">
+		<section id="todoapp" ng-controller="todoController" ng-modal="globalTodo">
+			<header id="todo_header">
+				<h1>todos</h1>
+				<form id="todo-form" ng-submit="addTodo()">
+					<input class="todo" id="new-todo" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
+				</form>
+			</header>
+			<section id="todo_main" ng-show="totalCount" ng-cloak>
+				<input class="todo" id="todo_toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
+				<label for="todo_toggle-all">Mark all as complete</label>
+				<ul id="todo-list">
+					<li ng-repeat="(id, todo) in todos | todoFilter" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+						<div class="view">
+							<input class="toggle todo" type="checkbox" ng-model="todo.completed" ng-change="todos.$save(id)">
+							<label ng-dblclick="editTodo(id)">{{todo.title}}</label>
+							<button class="destroy todo" ng-click="removeTodo(id)"></button>
+						</div>
+						<form ng-submit="doneEditing(id)">
+							<input class="edit todo" ng-model="todo.title" todo-escape="revertEditing(id)" todo-blur="doneEditing(id)" todo-focus="todo == editedTodo">
+						</form>
+					</li>
+				</ul>
+			</section>
+			<footer id="todo_footer" ng-show="totalCount" ng-cloak>
+				<span id="todo-count"><strong>{{remainingCount}}</strong>
+					<ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
+				</span>
+				<ul id="todo_filters">
+					<li>
+						<a ng-class="{selected: location.path() == '{{urlpath}}/'} " href="#{{urlpath}}/">All</a>
+					</li>
+					<li>
+						<a ng-class="{selected: location.path() == '{{urlpath}}/active'}" href="#{{urlpath}}/active">Active</a>
+					</li>
+					<li>
+						<a ng-class="{selected: location.path() == '{{urlpath}}/completed'}" href="#{{urlpath}}/completed">Completed</a>
+					</li>
+				</ul>
+				<button class="todo" id="todo_clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount">Clear completed ({{completedCount}})</button>
+			</footer>
+		</section>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<!-- <div google-chart chart="chart" style="{{chart.cssStyle}}"/> -->
+	</div>
+</div>
