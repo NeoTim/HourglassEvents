@@ -4,7 +4,7 @@
 // Declare app level module which depends on filters, and services
 var myApp = angular.module('myApp',
       ['ngAnimate', 'ui.router', 
-         'ng-firebase', 'ui.sortable', 'angular-flip', 'firebase',
+         'ng-firebase', 'ui.sortable', 'angular-flip', 'firebase', 'myApp.calendar',
         'myApp.config', 'myApp.filters', 'myApp.services',
         'myApp.directives', 'myApp.siteController', 'myApp.todoController',
         'myApp.authController', 'myApp.companiesController',

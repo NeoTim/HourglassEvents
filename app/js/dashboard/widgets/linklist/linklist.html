@@ -1,7 +1,7 @@
 <div class="linklist">
   <ul class="nav nav-stacked">
-    <li ng-repeat="(id, link) in links | orderByPriority">
-      <a ng-href="#/companies/{{id}}">{{link.company}}</a>
+    <li ng-repeat="link in links | orderByPriority">
+      <a ng-href="#/companies/{{link.id}}">{{link.company}}</a>
     </li>
   </ul>
 </div>

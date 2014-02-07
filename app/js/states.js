@@ -47,6 +47,13 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
             template: '<iframe style="width:100%; min-height:100%; margin-bottom:0;" src="https://docs.google.com/a/hisimagination.com/spreadsheet/ccc?key=0AkMcfRC8dZgidE1oMWExZlBrSVo0emlkakEwX1JTdkE&usp=sharing"></iframe>'
         });
 
+    $stateProvider
+        .state('calendar', {
+            url: '/calendar',
+            templateUrl: 'templates/calendar/index.html',
+            controller: 'CalendarCtrl'
+        });
+
 
 
     $stateProvider
@@ -74,11 +81,7 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
             templateUrl: "/templates/dashboard/index.html",
             controller: 'dashboardCtrl'
     })
-    $stateProvider.state('home', {
-        url:"/home",
-        templateUrl: "partials/home.html",
-        controller: "HomeCrtl"
-    })
+
 
 /*    $stateProvider.state('exhibitors', {
         url: "/exhibitors",
