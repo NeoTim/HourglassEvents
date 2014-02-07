@@ -936,7 +936,7 @@ h7 .label {
   font-size: 11px !important;
   font-weight: 300;
   text-align: center;
-  background-color: #e02222;
+  background:none;
   height: 18px;
   padding: 3px 6px 3px 6px;
   -webkit-border-radius: 12px !important;
@@ -986,6 +986,15 @@ h7 .label {
   background-color: #6ab2ee;
   background-image: none !important;
 }
+
+.label-none, 
+.badge-none {
+  background-color:rgba(0,0,0,0);
+  background-image: none !important;
+  color:#000000;
+}
+
+
 
 /* fix badge position for navs */
 .nav.nav-pills > li > a > .badge {
@@ -1069,9 +1078,9 @@ Pagination
 wells
 ***/
 .well {  
-  -webkit-box-shadow: none !important;
+ /* -webkit-box-shadow: none !important;
      -moz-box-shadow: none !important;
-          box-shadow: none !important;
+          box-shadow: none !important;*/
 }
 
 /* Bootstrap Tabs */

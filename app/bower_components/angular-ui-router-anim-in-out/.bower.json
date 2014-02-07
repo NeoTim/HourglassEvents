@@ -1,0 +1,22 @@
+{
+  "name": "angular-ui-router-anim-in-out",
+  "version": "0.0.5",
+  "main": "anim-in-out.js",
+  "dependencies": {
+    "angular": "~1.2.8",
+    "angular-animate": "~1.2.8",
+    "angular-ui": "~0.4.0",
+    "angular-ui-router": "0.2.8-bowratic-tedium"
+  },
+  "homepage": "https://github.com/homerjam/angular-ui-router-anim-in-out",
+  "_release": "0.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.5",
+    "commit": "46736839cc1b1e9725fa4736cfaffdc47095fa98"
+  },
+  "_source": "git://github.com/homerjam/angular-ui-router-anim-in-out.git",
+  "_target": "~0.0.5",
+  "_originalSource": "angular-ui-router-anim-in-out",
+  "_direct": true
+}

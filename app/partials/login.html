@@ -1,24 +1,35 @@
 
-<h2>Login Page</h2>
 
-<form>
+
+<div class="col-md-4 col-md-offset-4 "  style="padding-top:50px;">
+<div class="panel panel-inverse">
+<div class="panel-heading">
+    
+<h2 class="panel-title">Login Page</h2>
+
+</div>
+
+<div class="panel-body">
+<form class="form">
     <label>
         <span>email</span>
-        <input type="text" ng-model="email" />
+        <input type="text" ng-model="email" class="form-control" />
     </label>
     <label>
         <span>password</span>
-        <input type="password" ng-model="pass" />
+        <input type="password" ng-model="pass" class="form-control"/>
     </label>
     <label ng-cloak ng-show="createMode">
         <span>confirm pass</span>
         <input type="password" ng-model="confirm" />
     </label>
-    <button ng-click="login()" ng-hide="createMode">Log In</button>
-    <button ng-click="createMode = true" ng-hide="createMode">Register</button>
+    <button ng-click="login()" ng-hide="createMode" class="btn btn-primary">Log In</button>
+    <button ng-click="createMode = true" ng-hide="createMode"  class="btn btn-inverse" >Register</button>
     <button ng-cloak ng-show="createMode" ng-click="createAccount()">Create Account</button>
     <button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
 
     <p ng-show="err" class="error">{{err}}</p>
 </form>
-
+</div>
+</div>
+</div>

@@ -1,0 +1,10 @@
+<div class="hero-unit">
+  <h4>Contact List</h4>
+  <ul>
+    <li ng-repeat="(k,v) in items">
+      <a href="#/list/{{k}}">{{v.firstName}} {{v.lastName}}</a>
+    </li>
+  </ul>
+  <hr>
+  <ui-view></ui-view>
+</div>  

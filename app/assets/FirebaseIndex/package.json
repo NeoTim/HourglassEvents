@@ -1,0 +1,19 @@
+{
+  "name": "FirebaseIndex",
+  "version": "0.0.4",
+  "keywords": [
+    "Wordspot"
+  ],
+  "homepage": "https://github.com/Zenovations/FirebaseIndex",
+  "author": "Michael 'Kato' Wulf",
+  "dependencies": {
+    "firebase": "*",
+    "JQDeferred": "*"
+  },
+  "devDependencies": {},
+  "engine": "node >= 0.10.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zenovations/FirebaseIndex.git"
+  }
+}

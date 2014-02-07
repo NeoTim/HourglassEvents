@@ -1,0 +1,42 @@
+
+<section id="noteapp" ng-controller="NoteCtrl">
+        <header id="note_header">
+          
+          <form id="note-form" ng-submit="addNote()">
+            <input class="note" id="new-note" placeholder="Make a note of it!" ng-model="newNote" autofocus>
+          </form>
+        </header>
+        <section id="note_main" ng-show="totalCount" ng-cloak>
+          <input class="note" id="note_toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
+          <label for="note_toggle-all">Mark all as complete</label>
+          <ul id="note-list">
+            <li ng-repeat="(id, note) in notes | noteFilter" ng-class="{completed: note.completed, editing: note == editedNote}">
+              <div class="view">
+                <input class="toggle note" type="checkbox" ng-model="note.completed" ng-change="notes.$save(id)">
+                <label ng-dblclick="editNote(id)">{{note.title}}</label>
+                <button class="destroy note" ng-click="removeNote(id)"></button>
+              </div>
+              <form ng-submit="doneEditing(id)">
+                <input class="edit note" ng-model="note.title" note-escape="revertEditing(id)" note-blur="doneEditing(id)" note-focus="note == editedNote">
+              </form>
+            </li>
+          </ul>
+        </section>
+        <footer id="note_footer" ng-show="totalCount" ng-cloak>
+          <span id="note-count"><strong>{{remainingCount}}</strong>
+            <ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
+          </span>
+          <ul id="note_filters">
+            <li>
+              <a ng-class="{selected: location.path() == '{{urlpath}}/'} " href="#{{urlpath}}/">All</a>
+            </li>
+            <li>
+              <a ng-class="{selected: location.path() == '{{urlpath}}/active'}" href="#{{urlpath}}/active">Active</a>
+            </li>
+            <li>
+              <a ng-class="{selected: location.path() == '{{urlpath}}/completed'}" href="#{{urlpath}}/completed">Completed</a>
+            </li>
+          </ul>
+          <button class="note" id="note_clear-completed" ng-click="clearCompletedNotes()" ng-show="completedCount">Clear completed ({{completedCount}})</button>
+        </footer>
+      </section>

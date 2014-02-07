@@ -30,6 +30,23 @@
             "email": {
                ".validate": "newData.isString() && newData.val().length <= 2000"
             },
+            "tiles": {
+               ".read": true,
+               "$tile": {
+                  ".write": true,
+                  "position":{"newData.isString() && newData.val().length <= 2000"
+                  },
+                  "id":{ "newData.isString() && newData.val().length <= 2000"
+                  },
+                  "title" :{"newData.isString() && newData.val().length <= 2000"
+                  },
+                  "color": {"newData.isString() && newData.val().length <= 2000"
+                  },
+                  "url": {"newData.isString() && newData.val().length <= 2000"
+                  },
+               }
+
+            },
             "$other": {
                ".validate": false
             }

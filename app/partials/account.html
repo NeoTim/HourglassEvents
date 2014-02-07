@@ -1,44 +1,57 @@
 
-<h2>Account</h2>
-
+<div class="col-md-6 col-md-offset-3">
+<div class="panel panel-primary">
+<div class="panel-heading">
+    <div class="panel-title">Account</div>
+</div>
+<div class="panel-body">
+    
 <form>
-    <fieldset>
+    
         <legend>Profile</legend>
 
         <label>
             <span>Name:</span>
-            <input type="text" name="name" ng-model="user.name"/>
+            <input type="text" name="name" ng-model="user.name" class="form-control" />
         </label>
 
         <label>
             <span>Email:</span>
-            <input type="text" name="name" ng-model="user.email"/>
+            <input class="form-control" type="text" name="name" ng-model="user.email" />
         </label>
-    </fieldset>
+    <button class="btn btn-primary" ng-click="logout()">Log Out</button>
+</div>
+</div>
+<div class="panel panel-inverse">
+        <div class="panel-heading">
+            <div class="panel-title">Change Password</div>
+        </div>
+<div class="panel-body">
 
-    <fieldset>
-        <legend>Change Password</legend>
+        
 
         <label>
             <span>Old Password:</span>
-            <input type="password" ng-keypress="reset()" ng-model="oldpass"/>
+            <input type="password" ng-keypress="reset()" ng-model="oldpass" class="form-control"/>
         </label>
 
         <label>
             <span>New Password:</span>
-            <input type="password" ng-keypress="reset()" ng-model="newpass"/>
+            <input type="password" ng-keypress="reset()" ng-model="newpass" class="form-control"/>
         </label>
 
         <label>
             <span>Confirm Password:</span>
-            <input type="password" ng-keypress="reset()" ng-model="confirm"/>
+            <input type="password" ng-keypress="reset()" ng-model="confirm" class="form-control"/>
         </label>
 
-        <button ng-click="updatePassword()">update password</button>
+        <button class="btn btn-inverse" ng-click="updatePassword()">update password</button>
 
         <p class="error" ng-show="err">{{err}}</p>
         <p class="good" ng-show="msg">{{msg}}</p>
-    </fieldset>
+    
 </form>
 
-<button ng-click="logout()">Log Out</button>
+
+</div>
+</div>

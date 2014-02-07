@@ -1,0 +1,542 @@
+<span class="align-center">
+	<h1>Exhibitors</h1>
+</span>
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		<div class="col-xs-6">
+			<div class="input-group col-md-6">
+				<div class="input-group-btn">
+					<button class="btn btn-primary"><i class="fa fa-search"></i></button>
+				</div>
+				<input class="form-control" ng-model="filter.$" >
+				<div class="input-group-btn">
+					<a href="#/exhibitors/trash" class="btn btn-danger"><i class="fa fa-search"></i> Trash</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-6">
+			<button id="inc"  href="orders/create" class="btn btn-primary aligncenter pull-right">Add Exhibitor</button>
+		</div>
+	</div>
+</div>
+<form name="myForm">
+	     <div contenteditable
+	          name="myWidget" ng-model="userContent"
+	          strip-br="true"
+	          required>Change me!</div>
+	      <span ng-show="myForm.myWidget.$error.required">Required!</span>
+	     <hr>
+	     <textarea ng-model="userContent"></textarea>
+	    </form>
+
+<br />
+<div class="col-md-12" >
+<!-- 
+   <table ng-table="tableParams" class="table">
+        <tr ng-repeat="exh in $data">
+        	<td data-title="'Actions'" width="200">
+        	
+                <a ng-if="!exh.$edit" href="" class="btn btn-default btn-sm" ng-click="exh.$edit = true">Edit</a>
+                <button ng-if="exh.$edit" class="btn btn-primary btn-sm"  ng-click="exh.$edit = false">Save</button>
+            </td>
+            <td data-title="'Company'" sortable="'company'">
+                 <span ng-if="!exh.$edit">{{exh.company}}</span>
+                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.comapny" ng-change="doneEditing(exh.id, 'company', exh.company)" /></div>
+                
+            </td>
+            <td data-title="'committed'" sortable="'comitted'">
+                <span ng-if="!exh.$edit">{{exh.committed}}</span>
+                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.committed" /></div>
+            </td>
+            <td data-title="'Contract'" sortable="'contract'">
+                <span ng-if="!exh.$edit">{{exh.contract}}</span>
+                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.contract" /></div>
+            </td>
+            <td data-title="'Forcast'" sortable="'forcast_revenue'">
+                <span ng-if="!exh.$edit">{{exh.forcast_revenue}}</span>
+                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.forcast_revenue" /></div>
+            </td>
+            <td data-title="'Payment'" sortable="'payment'">
+                <span ng-if="!exh.$edit">{{exh.payment}}</span>
+                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.payment" /></div>
+            </td>
+            <td data-title="'payment_method'" sortable="'payment_method'">
+                <span ng-if="!exh.$edit">{{exh.payment_method}}</span>
+                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.payment_method" /></div>
+            </td>
+            <td data-title="'Deposit due'" sortable="'deposit_due'">
+                <span ng-if="!exh.$edit">{{exh.deposit_due}}</span>
+                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.deposit_due" /></div>
+            </td>
+            <td data-title="'Total due'" sortable="'total_due'">
+                <span ng-if="!exh.$edit">{{exh.total_due}}</span>
+                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.total_due" /></div>
+            </td>
+            <td data-title="'Amount Paid'" sortable="'amount_paid'">
+                <span ng-if="!exh.$edit">{{exh.amount_paid}}</span>
+                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.amount_paid" /></div>
+            </td>
+            <td data-title="'Partner Level'" sortable="'plevel'">
+                <span ng-if="!exh.$edit">{{exh.plevel}}</span>
+                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.plevel" /></div>
+            </td>
+            <td data-title="'Booth #'" sortable="'booth'">
+                <span ng-if="!exh.$edit">{{exh.booth}}</span>
+                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.booth" /></div>
+                
+            </td>
+
+            
+        </tr>
+    </table>
+  -->
+
+
+  <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+    
+	<table  ng-table="tableParams" class="exhibitors table table-bordered table-striped  table-hover table-full-width" id="noHighlight">
+	
+	
+		<tr ng-repeat="exh in $data" ng-if="exh.soft == 0" ng-modal="editRow" id="edit_row_{{}}" ng-init="er(exh.id)">
+			
+			<td data-title="'Options'" style="min-width:180px;">
+				
+					
+					<a href="#/exhibitors/{{exh.id}}" 
+						type="button" 
+						ng-model="checked" 
+						ng-click="checked = true" 
+						class="btn btn-info btn-sm" >View</a>
+					
+					<button type="button" class="btn  btn-inverse btn-sm" 
+						ng-if="exh.todos"
+						title="Todos" 
+						data-content="{{popover.content}}" 
+						data-template="templates/exhibitors/popovers/todos.html"
+						data-animation="am-flip-x" 
+						bs-popover>Todos</button>
+					<button type="button" class="btn  btn-default btn-sm" 
+						ng-if="exh.notes"
+						title="Notes" 
+						data-content="{{popover.content}}" 
+						data-template="templates/exhibitors/popovers/notes.html"
+						data-animation="am-flip-x" 
+						bs-popover>Notes</button>
+				
+				
+			</td>
+			<td data-title="'ID'" sortable="'id'">
+				<span ng-repeat="exhibitor in exhibitors">
+					<span ng-if="exhibitor.id == exh.id" ng-model="exhibitor.id">{{exhibitor.id}}</span>
+				</span>
+			</td>
+			<td data-title="'Company'"  
+				ng-dblclick="company = true"
+				ng-model="company" 
+				sortable="'company'"
+				ng-mouseleave="company = false"
+				id="company_{{exh.id}}">
+					<p class="check-element animate-show" ng-hide="company">{{memb.company}}</p>
+					<input style=""
+						ng-change="update(exh.id, 'company', memb.company)"
+						class="form-control check-element animate-show"
+						type="text"
+						ng-model="memb.company"
+						ng-show="company">
+			</td>
+			<td data-title="'Committed'"
+				ng-dblclick="ckComm = true"
+				ng-model="committed" 
+				ng-mouseleave="ckComm = false"
+				sortable="'committed'" ng-style="">
+				<span ng-repeat="exhibitor in exhibitors">
+					<span ng-if="exhibitor.id == exh.id" ng-model="exhibitor.id">
+
+						<p ng-if="exhibitor.committed == 1" class="check-element animate-show" ng-hide="ckComm">Yes</p>
+						<p ng-if="exhibitor.committed == 0" class="check-element animate-show" ng-hide="ckComm">No</p>
+						
+						<input class="form-control check-element animate-show" 
+							type="checkBox" 
+							ng-model="exhibitor.committed"
+							ng-change="doneEditing(exhibitor.id, 'committed', exhibitor.committed)" 
+							ng-show="ckComm">
+					</span>
+				</span>
+				
+			</td>
+			<td data-title="'Contract'"  
+				ng-dblclick="ckContract = true" 
+				ng-model="ckContract" 
+				ng-mouseleave="ckContract = false"
+				sortable="'contract'">
+				<span ng-repeat="exhibitor in exhibitors">
+					<span ng-if="exhibitor.id == exh.id" ng-model="exhibitor.id">
+					<p ng-if="exh.contract == 1" class="check-element animate-show" ng-hide="ckContract">Yes</p>
+					<p ng-if="exh.contract== 0" class="check-element animate-show" ng-hide="ckContract">No</p>
+
+					
+						<input class="form-control check-element animate-show" type="checkbox" ng-model="exh.contract"
+						ng-change="doneEditing(exh.id, 'contract', exh.contract)" ng-show="ckContract">
+					</span>
+				</span>
+				
+			</td>
+			<td data-title="'forcast_revenue'" 
+				sortable="'forcast_revenue'" 
+				ng-dblclick="ckForcast = true" 
+				ng-model="ckForcast" 
+				ng-mouseleave="ckForcast = false">
+				<span ng-repeat="exhibitor in exhibitors">
+					<span ng-if="exhibitor.id == exh.id" ng-model="exhibitor.id">
+
+					<p class="check-element animate-show" ng-hide="ckForcast">{{exh.forcast_revenue}}</p>
+
+					<input class="form-control check-element animate-show" type="text" ng-model="exh.forcast_revenue"
+						ng-change="doneEditing(exh.id, 'forcast_revenue', exh.forcast_revenue)" ng-show="ckForcast">
+					</span>
+				</span>
+				
+			</td>
+			<td data-title="'Payment'" 
+				sortable="'payment'"  
+				ng-dblclick="ckPayment = true" 
+				ng-model="ckPayment" 
+				ng-mouseleave="ckPayment = false">
+				<span ng-repeat="exhibitor in exhibitors">
+					<span ng-if="exhibitor.id == exh.id" ng-model="exhibitor.id">
+
+				<p ng-if="exh.payment == 0" class="check-element animate-show" ng-hide="ckPayment">No</p>
+				<p ng-if="exh.payment == 1" class="check-element animate-show" ng-hide="ckPayment">Yes</p>
+
+				<input class="form-control check-element animate-show" type="checkbox" ng-model="exh.payment"
+					ng-change="doneEditing(exh.id, 'payment', exh.payment)" ng-show="ckPayment">
+					<span ng-repeat="exhibitor in exhibitors">
+				<span ng-if="exhibitor.id == exh.id" ng-model="exhibitor.id">
+			</td>
+			<td data-title="'Payment_method'" 
+				sortable="'payment_method'"  
+				ng-dblclick="ckMethod = true" 
+				ng-model="ckMethod" 
+				ng-mouseleave="ckMethod = false">
+
+				<p class="check-element animate-show" ng-hide="ckMethod">{{exh.payment_method}}</p>
+
+				<input class="form-control check-element animate-show" type="text" ng-model="exh.payment_method"
+					ng-change="doneEditing(exh.id, 'payment_method', exh.payment_method)" ng-show="ckMethod">
+			</td>
+			<td data-title="'Deposit due'" 
+				sortable="'deposit_due'"  
+				ng-dblclick="ckDeposit = true" 
+				ng-model="ckDeposit" 
+				ng-mouseleave="ckDeposit = false">
+
+				<p class="check-element animate-show" ng-hide="ckDeposit">{{exh.deposit_due}}</p>
+
+				<input class="form-control check-element animate-show" type="text" ng-model="exh.deposit_due"
+					ng-change="doneEditing(exh.id, 'deposit_due', exh.deposit_due)" ng-show="ckDeposit">
+			</td>
+			<td data-title="'Total due'" 
+				sortable="'total_due'"  
+				ng-dblclick="ckDue = true" 
+				ng-model="ckDue" 
+				ng-mouseleave="ckDue = false">
+
+				<p class="check-element animate-show" ng-hide="ckDue">{{exh.total_due}}</p>
+
+				<input class="form-control check-element animate-show" type="text" ng-model="exh.total_due"
+					ng-change="doneEditing(exh.id, 'total_due', exh.total_due)" ng-show="ckDue">
+			</td>
+			<td data-title="'Amount paid'" 
+				sortable="'amount_paid'"  
+				ng-dblclick="ckPaid = true" 
+				ng-model="ckPaid" 
+				ng-mouseleave="ckPaid = false">
+
+				<p ng-if="exh.deposit_due == 0.00" class="check-element animate-show" ng-hide="ckPaid">{{exh.amount_paid}}</p>
+				<p ng-if="exh.deposit_due >= 0.00 " class="check-element animate-show" ng-hide="ckPaid">{{exh.amount_paid}}</p>
+
+				<input class="form-control check-element animate-show" type="text" ng-model="exh.amount_paid"
+					ng-change="doneEditing(exh.id, 'amount_paid', exh.amount_paid)" ng-show="ckPaid">
+			</td>
+			<td data-title="'Partner level'"  
+				sortable="'plevel'"  
+				ng-dblclick="ckPlevel = true"
+				ng-model="ckPlevel" ng-mouseleave="ckPlevel = false">
+
+				<p class="check-element animate-show" ng-hide="ckPlevel">{{exh.plevel}}</p>
+
+				<select class="check-element animate-show form-control" ng-model="exh.plevel" ng-change="doneEditing(exh.id, 'plevel', exh.plevel)" ng-show="ckPlevel">
+					<option value="Exhibitor">Exhibitor</option>
+					<option value="Bronze">Bronze</option>
+					<option value="Silver">Silver</option>
+					<option value="Gold">Gold</option>
+					<option value="Platinum">Platinum</option>
+				</select>
+
+			</td>
+			<td   data-title="'Booth #'"  sortable="'booth'"  ng-dblclick="ckBooth = true" ng-model="ckBooth" ng-mouseleave="ckBooth = false">
+
+				<p class="check-element animate-show" ng-hide="ckBooth">{{exh.booth}}</p>
+				<input class="form-control check-element animate-show" type="text" ng-model="exh.booth"
+					ng-change="doneEditing(exh.id, 'booth', exh.booth)" ng-show="ckBooth">
+			</td>
+			<td data-title="'Delete'">
+				<button id="" ng-click="softDelete(exh.id)" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+
+			</td>
+		</tr>
+	</table>
+
+<!-- 
+    <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+    <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
+	<table  ng-table="tableParams" class="table table-bordered table-striped  table-hover table-full-width" id="noHighlight" >
+	
+	
+		<tr ng-repeat="exh in $data" ng-if="exh.soft == 0" ng-modal="editRow[exh.id]" id="edit_row_{{exh.id}}">
+			<td data-title="'Options'" style="min-width:180px;">
+				
+					
+					<a href="#/exhibitors/{{exh.id}}" 
+						type="button" 
+						ng-model="checked" 
+						ng-click="checked = true" 
+						class="btn btn-info btn-sm" >View</a>
+					
+					<button type="button" class="btn  btn-inverse btn-sm" 
+						ng-if="exh.todos"
+						title="Todos" 
+						data-content="{{popover.content}}" 
+						data-template="templates/exhibitors/popovers/todos.html"
+						data-animation="am-flip-x" 
+						bs-popover>Todos</button>
+					<button type="button" class="btn  btn-default btn-sm" 
+						ng-if="exh.notes"
+						title="Notes" 
+						data-content="{{popover.content}}" 
+						data-template="templates/exhibitors/popovers/notes.html"
+						data-animation="am-flip-x" 
+						bs-popover>Notes</button>
+				
+				
+			</td>
+			<td data-title="'ID'" sortable="'id'" >{{exh.id}}</td>
+			<td data-title="'Company'"  
+				ng-dblclick="ckComp.$edit = true" 
+				ng-model="ckComp" 
+				ng-mouseleave="ckComp.$edit = false"
+				sortable="'company'" id="tdcompany{{id}}">
+
+				<p ng-if="!ckComp.$edit" >{{exh.company}}</p>
+				
+					<input style="width:200px;" ng-if="ckComp.$edit" class="form-control" type="text" ng-model="exh.company"
+					ng-enter="doneEditing(exh.id, 'company', exh.company)" ng-show="ckComp">
+			</td>
+			<td data-title="'Committed'"
+				ng-dblclick="ckComm = true"
+				ng-model="committed" 
+				ng-mouseleave="ckComm = false"
+				filter="{ 'committed': 'text' }" sortable="'committed'" ng-style="">
+
+				<p ng-if="exh.committed == 1" class="check-element animate-show" ng-hide="ckComm">Yes</p>
+				<p ng-if="exh.committed == 0" class="check-element animate-show" ng-hide="ckComm">No</p>
+				
+				<input class="form-control check-element animate-show" type="checkBox" ng-model="exh.committed"
+					ng-change="doneEditing(exh.id, 'committed', exh.committed)" ng-show="ckComm">
+				
+			</td>
+			<td data-title="'Contract'"  
+				ng-dblclick="ckContract = true" 
+				ng-model="ckContract" 
+				ng-mouseleave="ckContract = false"
+				sortable="'contract'">
+
+				<p ng-if="exh.contract == 1" class="check-element animate-show" ng-hide="ckContract">Yes</p>
+				<p ng-if="exh.contract== 0" class="check-element animate-show" ng-hide="ckContract">No</p>
+
+				
+					<input class="form-control check-element animate-show" type="checkbox" ng-model="exh.contract"
+					ng-change="doneEditing(exh.id, 'contract', exh.contract)" ng-show="ckContract">
+				
+			</td>
+			<td data-title="'forcast_revenue'" 
+				sortable="'forcast_revenue'" 
+				ng-dblclick="ckForcast = true" 
+				ng-model="ckForcast" 
+				ng-mouseleave="ckForcast = false">
+
+				<p class="check-element animate-show" ng-hide="ckForcast">{{exh.forcast_revenue}}</p>
+
+				<input class="form-control check-element animate-show" type="text" ng-model="exh.forcast_revenue"
+					ng-change="doneEditing(exh.id, 'forcast_revenue', exh.forcast_revenue)" ng-show="ckForcast">
+				
+			</td>
+			<td data-title="'Payment'" 
+				sortable="'payment'"  
+				ng-dblclick="ckPayment = true" 
+				ng-model="ckPayment" 
+				ng-mouseleave="ckPayment = false">
+
+				<p ng-if="exh.payment == 0" class="check-element animate-show" ng-hide="ckPayment">No</p>
+				<p ng-if="exh.payment == 1" class="check-element animate-show" ng-hide="ckPayment">Yes</p>
+
+				<input class="form-control check-element animate-show" type="checkbox" ng-model="exh.payment"
+					ng-change="doneEditing(exh.id, 'payment', exh.payment)" ng-show="ckPayment">
+			</td>
+			<td data-title="'Payment_method'" 
+				sortable="'payment_method'"  
+				ng-dblclick="ckMethod = true" 
+				ng-model="ckMethod" 
+				ng-mouseleave="ckMethod = false">
+
+				<p class="check-element animate-show" ng-hide="ckMethod">{{exh.payment_method}}</p>
+
+				<input class="form-control check-element animate-show" type="text" ng-model="exh.payment_method"
+					ng-change="doneEditing(exh.id, 'payment_method', exh.payment_method)" ng-show="ckMethod">
+			</td>
+			<td data-title="'Deposit due'" 
+				sortable="'deposit_due'"  
+				ng-dblclick="ckDeposit = true" 
+				ng-model="ckDeposit" 
+				ng-mouseleave="ckDeposit = false">
+
+				<p class="check-element animate-show" ng-hide="ckDeposit">{{exh.deposit_due}}</p>
+
+				<input class="form-control check-element animate-show" type="text" ng-model="exh.deposit_due"
+					ng-change="doneEditing(exh.id, 'deposit_due', exh.deposit_due)" ng-show="ckDeposit">
+			</td>
+			<td data-title="'Total due'" 
+				sortable="'total_due'"  
+				ng-dblclick="ckDue = true" 
+				ng-model="ckDue" 
+				ng-mouseleave="ckDue = false">
+
+				<p class="check-element animate-show" ng-hide="ckDue">{{exh.total_due}}</p>
+
+				<input class="form-control check-element animate-show" type="text" ng-model="exh.total_due"
+					ng-change="doneEditing(exh.id, 'total_due', exh.total_due)" ng-show="ckDue">
+			</td>
+			<td data-title="'Amount paid'" 
+				sortable="'amount_paid'"  
+				ng-dblclick="ckPaid = true" 
+				ng-model="ckPaid" 
+				ng-mouseleave="ckPaid = false">
+
+				<p ng-if="exh.deposit_due == 0.00" class="check-element animate-show" ng-hide="ckPaid">{{exh.amount_paid}}</p>
+				<p ng-if="exh.deposit_due >= 0.00 " class="check-element animate-show" ng-hide="ckPaid">{{exh.amount_paid}}</p>
+
+				<input class="form-control check-element animate-show" type="text" ng-model="exh.amount_paid"
+					ng-change="doneEditing(exh.id, 'amount_paid', exh.amount_paid)" ng-show="ckPaid">
+			</td>
+			<td data-title="'Partner level'"  
+				sortable="'plevel'"  
+				ng-dblclick="ckPlevel = true"
+				ng-model="ckPlevel" ng-mouseleave="ckPlevel = false">
+
+				<p class="check-element animate-show" ng-hide="ckPlevel">{{exh.plevel}}</p>
+
+				<select class="check-element animate-show form-control" ng-model="exh.plevel" ng-change="doneEditing(exh.id, 'plevel', exh.plevel)" ng-show="ckPlevel">
+					<option value="Exhibitor">Exhibitor</option>
+					<option value="Bronze">Bronze</option>
+					<option value="Silver">Silver</option>
+					<option value="Gold">Gold</option>
+					<option value="Platinum">Platinum</option>
+				</select>
+
+			</td>
+			<td   data-title="'Booth #'"  sortable="'booth'"  ng-dblclick="ckBooth = true" ng-model="ckBooth" ng-mouseleave="ckBooth = false">
+
+				<p class="check-element animate-show" ng-hide="ckBooth">{{exh.booth}}</p>
+				<input class="form-control check-element animate-show" type="text" ng-model="exh.booth"
+					ng-change="doneEditing(exh.id, 'booth', exh.booth)" ng-show="ckBooth">
+			</td>
+			<td data-title="'Delete'">
+				<button id="" ng-click="softDelete(exh.id)" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+
+			</td>
+		</tr>
+	
+</table>
+	 --> 
+<!-- 
+	<table class="table table-bordered table-striped  table-hover table-full-width" id="noHighlight">
+	<thead>		
+		<tr>
+			<th>Options</th>
+			<th>ID</th>
+			<th>Company</th>
+			<th>Committed</th>
+			<th>Contract</th>
+			<th>Forcast Revenue</th>
+			<th>Payment</th>
+			<th>Payment Method</th>
+			<th>Deposit Due</th>
+			<th>Total Due</th>
+			<th>Amount Paid</th>
+			<th>Partner Level</th>
+			<th>Booth #</th>
+		</tr>
+	</thead>
+	<form class="simple-form">
+	<tbody class="exhibitors">
+		<tr ng-repeat="exh in exhibitors | orderBy:predicate" ng-if="exh.soft == 0" ng-modal="editRow">
+			<td data-title="'Actions'" width="200">
+		                <a ng-if="!exh.$edit" href="" class="btn btn-default btn-sm" ng-click="exh.$edit = true">Edit</a>
+		                <button ng-if="exh.$edit" type="submit" class="btn btn-primary btn-sm"  ng-click="updateExh(exh.id)">Save</button>
+		            </td>
+		            <td>{{exh.id}}</td>
+		            <td data-title="'Company'" sortable="'company'">
+		                 <span ng-if="!exh.$edit">{{exh.company}}</span>
+		                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.comapny" ng-change="doneEditing(exh.id, 'company', exh.company)" /></div>
+		                
+		            </td>
+		            <td data-title="'committed'" sortable="'comitted'">
+		                <span ng-if="!exh.$edit">{{exh.committed}}</span>
+		                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.committed" /></div>
+		            </td>
+		            <td data-title="'Contract'" sortable="'contract'">
+		                <span ng-if="!exh.$edit">{{exh.contract}}</span>
+		                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.contract" /></div>
+		            </td>
+		            <td data-title="'Forcast'" sortable="'forcast_revenue'">
+		                <span ng-if="!exh.$edit">{{exh.forcast_revenue}}</span>
+		                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.forcast_revenue" /></div>
+		            </td>
+		            <td data-title="'Payment'" sortable="'payment'">
+		                <span ng-if="!exh.$edit">{{exh.payment}}</span>
+		                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.payment" /></div>
+		            </td>
+		            <td data-title="'payment_method'" sortable="'payment_method'">
+		                <span ng-if="!exh.$edit">{{exh.payment_method}}</span>
+		                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.payment_method" /></div>
+		            </td>
+		            <td data-title="'Deposit due'" sortable="'deposit_due'">
+		                <span ng-if="!exh.$edit">{{exh.deposit_due}}</span>
+		                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.deposit_due" /></div>
+		            </td>
+		            <td data-title="'Total due'" sortable="'total_due'">
+		                <span ng-if="!exh.$edit">{{exh.total_due}}</span>
+		                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.total_due" /></div>
+		            </td>
+		            <td data-title="'Amount Paid'" sortable="'amount_paid'">
+		                <span ng-if="!exh.$edit">{{exh.amount_paid}}</span>
+		                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.amount_paid" /></div>
+		            </td>
+		            <td data-title="'Partner Level'" sortable="'plevel'">
+		                <span ng-if="!exh.$edit">{{exh.plevel}}</span>
+		                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.plevel" /></div>
+		            </td>
+		            <td data-title="'Booth #'" sortable="'booth'">
+		                <span ng-if="!exh.$edit">{{exh.booth}}</span>
+		                <div ng-if="exh.$edit"><input class="form-control" type="text" ng-model="exh.booth" /></div>
+		                
+		            </td>
+		</tr>
+	</tbody>
+</table>
+</form> -->
+	 
+
+</div>

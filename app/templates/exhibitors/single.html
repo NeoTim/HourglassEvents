@@ -18,31 +18,61 @@
 				</address>
 			</div>
 			<div class="well" >
+				<span class="pull-right">							
+					<button class="btn btn-primary btn-sm" ng-click="addContact()"><i class="fa fa-plus"></i></button>
+				</span>
 				<h4>Contacts:</h4>
-				<hr>
-				<div class="row" ng-repeat="contact in AllContacts" ng-if="contact.primary !== 1">
+			</div>
+			<div class="row" ng-repeat="contact in exh.contacts" >
+				<flip>
+				<flip-front>
 					<div class="col-md-12">
-						
+						<div class="well" ng-model="controls" ng-mouseenter="controls = true" ng-mouseleave="controls = false">
+							<span class="pull-right check-element" ng-show="controls">							
+							<button class="btn btn-warning btn-sm" flip-toggle><i class="fa fa-cog"></i></button>
+							</span>
 							<h5><strong>{{contact.first}} {{contact.last}}</strong></h5>
+
+
 							<h6 ng-if="contact.title">{{contact.title}}</h6>
 							<i ng-if="contact.office" class="fa fa-phone"></i> &nbsp; {{contact.office}} <br>
 							<i ng-if="contact.mobile" class="fa fa-mobile-phone"></i>  &nbsp; &nbsp;{{contact.mobile}} <br>
 							<i ng-if="contact.mobile" class="fa fa-print"></i> &nbsp; {{contact.fax}} <br>
 							<a href="mailto:#" ng-if="primary.email"><i class="fa fa-envelope"></i>  {{contact.email}}</a><br>
-						
-						<table class="" ng-if="contact.primary || contact.financial">
-							<tr>
-								<td style="padding-right:30px;"><strong>Contact Type:</strong></td>
-								<td style="padding-right:20px;" ng-if="contact.primary">Primary</td>
-								<td ng-if="contact.financial">Financial</td>
-							</tr>
-						</table>
-					<hr>
+							
+							<table class="" ng-if="contact.primary || contact.financial">
+								<tr>
+									<td style="padding-right:30px;"><strong>Contact Type:</strong></td>
+									<td style="padding-right:20px;" ng-if="contact.primary">Primary</td>
+									<td ng-if="contact.financial">Financial</td>
+								</tr>
+							</table>
+						</div>
 					</div>
-				</div>
+				</flip-front>
+				<flip-back>
+					<div class="col-md-12" ng-controller="contactController" ng-init="init(exh.id, contact.$id)">
+						<div class="well" ng-model="controls">
+							
+								<button class="btn btn-inverse btn-sm pull-right" flip-toggle><i class="fa fa-undo"></i></button>
+								<h5><strong>{{contact.first}} {{contact.last}}</strong></h5>
+								<br/>
+								<input class="form-control" ng-model="contact.first" ng-change="update('title', contact.first)">
+								<input class="form-control" ng-model="contact.last" ng-change="update('title', contact.last)">
+								<input class="form-control" ng-model="contact.title" ng-change="update('title', contact.title)">
+								<input class="form-control" ng-model="contact.office" ng-change="update('title', contact.office)">
+								<input class="form-control" ng-model="contact.mobile" ng-change="update('title', contact.mobile)">
+								<input class="form-control" ng-model="contact.email" ng-change="update('title', contact.email)">
+								<input class="form-control" ng-model="contact.fax" ng-change="update('title', contact.fax)">
+							
+						</div>
+					</div>
+				</flip-back>
+				</flip>
 			</div>
+			
 			<div class="btn-group">
-				<button class="btn btn-danger" href="#/exhibitors"  ng-click="removeExhibitor()">Delete</button>
+				<!-- <button class="btn btn-danger" href="#/exhibitors"  ng-click="removeExhibitor()">Delete</button> -->
 				
     				<div ng-show="selected">Selection from a modal: {{ selected }}</div>
 				
@@ -71,7 +101,7 @@
 						<li ng-repeat="(id, todo) in todos | todoFilter" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
 							<div class="view">
 								<input class="toggle todo" type="checkbox" ng-model="todo.completed" ng-change="todos.$save(id)">
-								<label ng-dblclick="editTodo(id)">{{todo.title}}</label>
+								<p><label ng-dblclick="editTodo(id)">{{todo.title}}</label></p>
 								<button class="destroy todo" ng-click="removeTodo(id)"></button>
 							</div>
 							<form ng-submit="doneEditing(id)">
