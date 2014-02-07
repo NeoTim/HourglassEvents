@@ -118,26 +118,11 @@ angular.module('sample', [
         columns: [{
           class: "col-md-4",
           widgets: [{
-            type: "linklist",
-            config: {
-              links: [{
-                title: "SCM-Manager",
-                href: "http://www.scm-manager.org"
-              }, {
-                title: "Github",
-                href: "https://github.com"
-              }, {
-                title: "Bitbucket",
-                href: "https://bitbucket.org"
-              }, {
-                title: "Stackoverflow",
-                href: "http://stackoverflow.com"
-              }]
-            },
-            title: "Links"
-          }, {
-            type: "weather",
+            type: "noteList",
             title: "Notes"
+          }, {
+            type: "linklist",
+            title: "Exhibitors"
           }]
         }, {
           class: "col-md-8",

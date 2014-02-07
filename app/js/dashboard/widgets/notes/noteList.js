@@ -28,7 +28,7 @@ angular.module('sample.widgets.noteList', ['adf.provider', 'ng-firebase'])
   .config(function(dashboardProvider){
     dashboardProvider
       .widget('noteList', {
-        title: 'My Notes',
+        title: 'Notes',
         description: 'Displays a list of links',
         controller: 'noteListCtrl',
         templateUrl: 'js/dashboard/widgets/notes/noteList.html',
