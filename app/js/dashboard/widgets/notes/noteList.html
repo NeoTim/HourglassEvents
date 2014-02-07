@@ -1,0 +1,21 @@
+<div class="linklist" ng-controller="noteListEditCtrl">
+		<button type="button" class="btn btn-default" ng-click="addLink()">
+		    <i class="fa fa-plus"></i> Add
+		  </button>
+  <div class="col-md-12" style="padding:10px;">
+    <div ng-repeat="link in links | orderBy:'title'" style="padding-top:10px;">
+
+    	
+    	
+		<div class="card-content" style="padding:10px;" title="enable edit mode" ng-click="toggleEditMode()">
+	    		<h3><strong><input type="text" id="title-{{$index}}" placeholder="Title" ng-model="link.title" style="border:none; outline:none;"></strong></h3>
+	    		<div contentEditable="true" id="href-{{$index}}" placeholder="Notes" ng-model="link.href" style="border:none; outline:none;"></div>
+	    	</div>
+	 	
+	    	
+
+	
+    </div>
+  </div>
+</div>
+      
