@@ -392,6 +392,32 @@ vertical-align: top;
   
     
 }
+.card-content.success, .card-content.success input {
+    background-color: #4fa950;
+    color: white;
+}
+.card-content.primary, .card-content.primary input  {
+    background-color: #15aaff;
+    color: white;
+}
+.card-content.danger, .card-content.danger input  {
+    background-color: #ea4519;
+    color: white;
+}
+.card-content.warning, .card-content.warning input  {
+    background-color: #ef9e2a;
+    color: white;
+}
+.card-content.info, .card-content.info input  {
+    background-color: #98caf3;
+    color: white;
+}
+.card-content.default, .card-content.default input  {
+    background-color: #ffffff;
+    color: black;
+}
+
+
 .card-header {
  
 }
@@ -918,6 +944,10 @@ li.tree-item {
 .panel-heading: {
   border-radius: 0;
   background:#ffffff;
+}
+
+.panel-body {
+  padding:0;
 }
 
 #visualization {

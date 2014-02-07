@@ -38,10 +38,11 @@ angular.module('sample.widgets.linklist', ['adf.provider', 'ng-firebase'])
           controller: 'linklistEditCtrl'
         }
       });
-  }).controller('linklistCtrl', function($scope, config){
+  }).controller('linklistCtrl', function($scope, config, syncData){
     if (!config.links){
       config.links = [];
     }
+    config.links = syncData('companies');
     $scope.links = config.links;
   }).controller('linklistEditCtrl', function($scope){
     function getLinks(){

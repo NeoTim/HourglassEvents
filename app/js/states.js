@@ -25,7 +25,7 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
         .state('companies.list', {
             url: "/list",
             authRequired: true,
-            templateUrl: "templates/companies/companies.list.html",
+            templateUrl: "templates/companies/companyList.html",
         })
         .state('companies.detail', {
             url: '/:id',

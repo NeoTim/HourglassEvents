@@ -179,22 +179,74 @@ angular.module('myApp.companiesController', ['firebase', 'ui.router', 'ng-fireba
 
 }])
 
-.controller("contactController", [ '$location', '$firebase', 'Firebase', '$scope', function($location, $firebase, Firebase, $scope){
-	$scope.init = function(company, item){
+.controller("contactController", [ '$location', '$firebase', '$scope', function($location, $firebase, $scope){
 
-		var company = $location.path();
-		var fireBaseUrl = "https://hourglass-events.firebaseio.com/" + company + "/contacts/" + item;
-		$scope.item = $firebase(new Firebase(fireBaseUrl + item));
+	var companyUrl = $location.path();
+    var Noteref  = 'http://hourglass-events.firebaseIO.com/' + companyUrl + "/contacts";
+    $scope.contacts = $firebase(new Firebase(Noteref));
 
-		$scope.update = function(field, newval){
-			$scope.item = new Firebase(fireBaseUrl);
-			console.log(field);
+    $scope.update = function(id, field, newval){
+        var ref = new Firebase(Noteref + "/" + id);
+        ref.child(field).set(newval);
+        console.log(id);
+      
+    }
 
-			$scope.item.child(field).set(newval);
-		}
 
-	
+    $scope.addContact = function(){
+      var ref = new Firebase(Noteref);
+      ref.push({name: "", title: "", office: "", mobile: "", email: "", fax: ""});
+    };
+    $scope.removeContact = function(index){
+      var ref = new Firebase(Noteref);
+      ref.child(index).remove();
+    };
 
-	}
 
-}]); 
+
+  
+
+}])
+
+.controller("notesController", [ '$location', '$firebase', '$scope', function($location, $firebase, $scope){
+
+	var companyUrl = $location.path();
+    var Noteref  = 'http://hourglass-events.firebaseIO.com/' + companyUrl + "/notes";
+    $scope.notes = $firebase(new Firebase(Noteref));
+
+    $scope.update = function(id, field, newval){
+        var ref = new Firebase(Noteref + "/" + id);
+        ref.child(field).set(newval);
+        console.log(id);
+      
+    }
+    $scope.moveUp = function(id, pos){
+        var ref = new Firebase(Noteref + "/" + id);
+       var x = pos - 1;
+        ref.child('position').set(x);
+        console.log(id);
+    }
+
+    $scope.moveDown = function(id, pos){
+        var ref = new Firebase(Noteref + "/" + id);
+        var x = pos +1;
+        	ref.child('position').set(x);
+        console.log(id);
+      
+    }
+
+
+    $scope.addNote = function(){
+      var ref = new Firebase(Noteref);
+       ref.push({body: "", title: "", position: 1});
+    };
+    $scope.removeNote = function(index){
+      var ref = new Firebase(Noteref);
+      ref.child(index).remove();
+    };
+
+
+
+  
+
+}]);

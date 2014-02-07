@@ -1,21 +1,30 @@
-<div class="linklist" ng-controller="noteListEditCtrl">
-		<button type="button" class="btn btn-default" ng-click="addLink()">
+<div class="linklist" ng-controller="noteListEditCtrl" style="">
+  	<div class="col-md-12" style="padding:10px; background-color:#f1f1f1;">
+  		<button type="button" class="btn btn-default" ng-click="addLink()">
 		    <i class="fa fa-plus"></i> Add
 		  </button>
-  <div class="col-md-12" style="padding:10px;">
-    <div ng-repeat="link in links | orderBy:'title'" style="padding-top:10px;">
+    		<div ng-repeat="(id, link) in links | orderBy:'title'" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
+			<div class="card-content {{link.color}}" style="padding:10px; " title="enable edit mode">
+		    		<h3><strong><input type="text" id="" placeholder="Title" ng-model="link.title" style="border:none; outline:none; width:100%;" ng-change="update(id, 'title', link.title)"></strong></h3>	    		
+		    		<div contentEditable="true" id="{{link.$id}}" placeholder="Notes" ng-model="link.body" style="border:none; outline:none;" ng-change="update(id, 'body', link.body)"></div>
+		    		<br>
+				<div class="card-footer " style="height:15px;" >
 
-    	
-    	
-		<div class="card-content" style="padding:10px;" title="enable edit mode" ng-click="toggleEditMode()">
-	    		<h3><strong><input type="text" id="title-{{$index}}" placeholder="Title" ng-model="link.title" style="border:none; outline:none;"></strong></h3>
-	    		<div contentEditable="true" id="href-{{$index}}" placeholder="Notes" ng-model="link.href" style="border:none; outline:none;"></div>
-	    	</div>
-	 	
-	    	
+					<i ng-show="note" class="fa fa-trash-o pull-right check-element" ng-click="removeLink(id)"></i>
+					<span ng-show="note" class="btn-group check-element">
+					<i class="fa fa-circle" style="color: #4fa950" ng-click="update(id, 'color', 'success')"></i>
+					<i class="fa fa-circle" style="color: #15aaff" ng-click="update(id, 'color', 'primary')"></i>
+					<i class="fa fa-circle" style="color: #ea4519" ng-click="update(id, 'color', 'danger')"></i>
+					<i class="fa fa-circle" style="color: #ef9e2a" ng-click="update(id, 'color', 'warning')"></i>
+					<i class="fa fa-circle" style="color: #98caf3" ng-click="update(id, 'color', 'info')"></i>
+					<i class="fa fa-circle" style="color: #ffffff" ng-click="update(id, 'color', 'default')"></i>
+					</span>
+					
+					    
+				</div>
+				
+    			</div>
+  		</div>
+	</div>
 
-	
-    </div>
-  </div>
-</div>
       
