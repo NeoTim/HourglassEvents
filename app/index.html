@@ -120,6 +120,7 @@ $script([
 		'js/dashboard/widgets/randommsg/randommsg.js',
 		'js/dashboard/widgets/profile/profile.js',
 		'js/dashboard/widgets/accountability/accountability.js',
+		'js/dashboard/widgets/notes/noteList.js',
 		'js/config.js',
 		"js/services/registerService.js",
 		'js/controllers/authController.js',
@@ -168,7 +169,9 @@ $script([
 							<!-- <li><a ui-sref="chat"><i class="fa fa-comment"></i></a></li> -->
 							<li ng-show-auth="logout,error"><a ui-sref="login"><i class="fa fa-sign-in"></i></a></li>
 							<li ng-show-auth="login"><a ui-sref="account"><i class="fa fa-sign-out"></i></a></li>
-							<li ng-class="{ active: $state.includes('companies') }"><a ui-sref="companies.list"><i class="fa fa-group"></i></a></li>
+							<li ng-class="{ active: $state.includes('companies') }"><a ui-sref="companies.list"><i class="fa fa-th-large"></i></a></li>
+							<li ><a ui-sref="grid"><i class="fa fa-table"></i></a></li>
+							<li ><a ui-sref="layout"><i class="fa fa-sitemap"></i></a></li>
 <!-- 							<li ng-class="{ active: $state.includes('edit-companies') }"><a ui-sref="edit-companies"><i class="fa fa-group"></i> </a></li> -->
 							<li><a ui-sref="calendar"><i class="fa fa-calendar"></i></a></li>
 

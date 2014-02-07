@@ -8,25 +8,43 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,  $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise("/login");
-    $urlRouterProvider.when("", "/dashboard");
+    
     $urlRouterProvider.when("/companies", "/companies/list");
+    $urlRouterProvider.otherwise("/dashboard");
+    
+    
 
      $stateProvider
         .state('companies', {
             abstract: true,
+            authRequired: true,
             url: "/companies",
             templateUrl: "templates/companies/companies.html",
             controller: "CompaniesControl"
         })
         .state('companies.list', {
             url: "/list",
+            authRequired: true,
             templateUrl: "templates/companies/companies.list.html",
         })
         .state('companies.detail', {
             url: '/:id',
+            authRequired: true,
             templateUrl: "templates/companies/single.html",
             controller: 'CompanyDetailCtrl'
+        });
+    $stateProvider
+        .state('layout', {
+            url: '/layout',
+            templateUrl: 'templates/layout.html',
+            controller: function($scope){
+
+            }
+        });
+    $stateProvider
+        .state('grid', {
+            url: '/grid',
+            template: '<iframe style="width:100%; min-height:100%; margin-bottom:0;" src="https://docs.google.com/a/hisimagination.com/spreadsheet/ccc?key=0AkMcfRC8dZgidE1oMWExZlBrSVo0emlkakEwX1JTdkE&usp=sharing"></iframe>'
         });
 
 
