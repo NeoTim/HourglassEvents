@@ -8,20 +8,7 @@
 <div class="row">
 	<div class="col-md-12" >
 		<div class="col-md-3">
-			<div class="well">
-				<address>
-					<h3><strong>{{exh.company}}</strong></h3>
-					{{exh.address}} <br>
-					{{exh.address2}} <br ng-if="exh.address2" >
-					{{exh.city}}, {{exh.state}} {{exh.zip}} {{exh.country}}<br>
-					<i ng-if="exh.phone" class="fa fa-phone"></i> &nbsp; {{exh.phone}} <br>
-				</address>
-			</div>
-
-
 			<div class="row"  >
-				
-				
 					<div class="col-md-12" ng-controller="contactController">
 						<div class="panel panel-default">
 							<div class="panel-heading">
@@ -32,7 +19,7 @@
 							  		<button type="button" class="btn btn-default" ng-click="addContact()">
 									    <i class="fa fa-plus"></i> Add
 									  </button>
-							    		<div ng-repeat="(id, link) in contacts | orderBy:'title'" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
+							    		<div ng-repeat="(id, link) in contacts  " style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
 										<div class="card-content {{link.color}}" style="padding:10px; " title="enable edit mode">
 									    		<h3><strong><input type="text" id="" placeholder="Name" ng-model="link.name" style="border:none; outline:none; width:100%;" ng-change="update(id, 'name', link.name)"></strong></h3>	    		
 									    		<p><input type="text" id="" placeholder="Title" ng-model="link.title" style="border:none; outline:none; width:100%;" ng-change="update(id, 'title', link.title)"></p>	    		
@@ -70,10 +57,6 @@
 			
 		</div>
 		<div class="col-md-4">
-			<div class="well">
-				<span ng-if="exh.committed == 0" class="alert alert-danger">{{exh.company}} is Not Committed!!</span>
-				<span ng-if="exh.committed == 1" class="alert alert-success">{{exh.company}} is Committed!!</span>
-			</div>
 			
 			<div class="panel panel-default" ng-controller="notesController">
 				<div class="panel-heading">
@@ -84,24 +67,24 @@
 				  		<button type="button" class="btn btn-default" ng-click="addNote()">
 						    <i class="fa fa-plus"></i> Add
 						</button>
-				    		<div ng-repeat="(id, link) in notes | orderBy:title" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
-							<div class="card-content {{link.color}}" style="padding:10px; " title="enable edit mode">
-						    		<h3><strong><input type="text" id="" placeholder="Title" ng-model="link.title" style="border:none; outline:none; width:100%;" ng-change="update(id, 'title', link.title)"></strong></h3>	    		
-						    		<div contentEditable="true" id="{{link.$id}}" placeholder="Notes" ng-model="link.body" style="border:none; outline:none;" ng-change="update(id, 'body', link.body)"></div>
+				    		<div ng-repeat="link in notes | orderByPriority | reverse" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
+							<div ng-if="link.title"  class="card-content {{link.color}}" style="padding:10px; " title="enable edit mode">
+						    		<div contentEditable="true" id="{{link.title}}" ng-model="link.title" style="border:none; outline:none; font-size:18px; font-weight:bold; margin-bottom:10px;"  ng-change="update(link.$id, 'title', link.title)"><div placeholder></div></div>	    		
+						    		<div contentEditable="true" id="{{link.$id}}" placeholder="Notes" ng-model="link.body" style="border:none; outline:none; " ng-change="update(link.$id, 'body', link.body)"></div>
 						    		<br>
 
 								<div class="card-footer " style="height:15px;" >
 
-									<i ng-show="note" class="fa fa-trash-o pull-right check-element" ng-click="removeNote(id)"></i>
-									<i ng-show="note" class="fa fa-arrow-up pull-right check-element" ng-click="moveDown(id)"></i>
-									<i ng-show="note" class="fa fa-arrow-down pull-right check-element" ng-click="moveUp(id)"></i>
+									<i ng-show="note" class="fa fa-trash-o pull-right check-element" ng-click="removeNote(link.$id)"></i>
+									<i ng-show="note" class="fa fa-arrow-up pull-right check-element" ng-click="moveDown(link.$id)"></i>
+									<i ng-show="note" class="fa fa-arrow-down pull-right check-element" ng-click="moveUp(link.$id)"></i>
 									<span ng-show="note" class="btn-group check-element">
-									<i class="fa fa-circle" style="color: #4fa950" ng-click="update(id, 'color', 'success')"></i>
-									<i class="fa fa-circle" style="color: #15aaff" ng-click="update(id, 'color', 'primary')"></i>
-									<i class="fa fa-circle" style="color: #ea4519" ng-click="update(id, 'color', 'danger')"></i>
-									<i class="fa fa-circle" style="color: #ef9e2a" ng-click="update(id, 'color', 'warning')"></i>
-									<i class="fa fa-circle" style="color: #98caf3" ng-click="update(id, 'color', 'info')"></i>
-									<i class="fa fa-circle" style="color: #ffffff" ng-click="update(id, 'color', 'default')"></i>
+									<i class="fa fa-circle" style="color: #4fa950" ng-click="update(link.$id, 'color', 'success')"></i>
+									<i class="fa fa-circle" style="color: #15aaff" ng-click="update(link.$id, 'color', 'primary')"></i>
+									<i class="fa fa-circle" style="color: #ea4519" ng-click="update(link.$id, 'color', 'danger')"></i>
+									<i class="fa fa-circle" style="color: #ef9e2a" ng-click="update(link.$id, 'color', 'warning')"></i>
+									<i class="fa fa-circle" style="color: #98caf3" ng-click="update(link.$id, 'color', 'info')"></i>
+									<i class="fa fa-circle" style="color: #ffffff" ng-click="update(link.$id, 'color', 'default')"></i>
 									</span>
 									
 									    

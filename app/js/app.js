@@ -28,6 +28,9 @@ var myApp = angular.module('myApp',
     })
 })*/
 
+.controller('CollapseDemoCtrl', function($scope) {
+          $scope.isCollapsed = false;
+})
 
 
 .run(['$state', '$stateParams', 'loginService', '$rootScope', 'FBURL', function($state, $stateParams, loginService, $rootScope, FBURL) {
@@ -46,9 +49,8 @@ var myApp = angular.module('myApp',
           // establish authentication
           $rootScope.auth = loginService.init('/login');
           $rootScope.FBURL = FBURL;
-
-
       }
+
      
 
 

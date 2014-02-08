@@ -11,8 +11,6 @@
          <link  rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
          <link  rel="stylesheet" type="text/css" href="bower_components/jquery.uniform/uniform._base.min.css">
          <link  rel="stylesheet" type="text/css" href="bower_components/normalize-css/normalize.css"/>
-         <link  rel="stylesheet" type="text/css" href="bower_components/sidr/css/jquery.sidr.dark.css"/>
-         <link  rel="stylesheet" type="text/css" href="bower_components/bootstrap-select/bootstrap-select.min.css"/>
         <!-- <link  rel="stylesheet" type="text/css" href="bower_components/angular-ui/angular-ui.min.css"/> -->
          <!-- MODIFIED -->
          <link  rel="stylesheet" type="text/css" href="assets/calendar/fullcalendar.css"/>
@@ -21,14 +19,12 @@
          <link  rel="stylesheet" type="text/css" href="assets/css/style.css"/>
          
          <link  rel="stylesheet" type="text/css" href="assets/css/default.css"/>
-         <link  rel="stylesheet" type="text/css" href="assets/css/uniform.default.css"/> 
+         
          <link  rel="stylesheet" type="text/css" href="assets/css/plugins.css"/>
          <link  rel="stylesheet" type="text/css" href="assets/css/app-styles.css" />
          <link  rel="stylesheet" type="text/css" href="assets/css/animations.css"/>
          <link  rel="stylesheet" type="text/css" href="assets/todomvc-common/base.css"/>
-         <link  rel="stylesheet" type="text/css" href="assets/todomvc-common/note.css"/>
          <link  rel="stylesheet" type="text/css" href="assets/angular-flip/src/flip.css"/>
-         <link rel="stylesheet" type="text/css" href="css/anim-in-out.css">
          <script src="bower_components/jquery/jquery.min.js" type="text/javascript"></script>
           <script src="bower_components/jquery-ui/ui/jquery-ui.js" type="text/javascript"></script>
    
@@ -158,8 +154,12 @@ $script([
 	<div id="sp-nav" style="overflow-y:scroll; background-color:#101010;"  ng-controller="CompaniesControl">
 		<input class="form-control" ng-model="filterText" style="margin-top:8px; height:34px; background-color:#ededed;" placeholder="Search..." />
 	        <ul class="list-group" >
+	            <li class="list-group-item" style=" background-color:#101010;  border-color:#222222; border-radius:0;" class="active"><a style="color:#f1f1f1;" ui-sref="dashboard">Dashboard</a></li>
+			<li class="list-group-item" style=" background-color:#101010;  border-color:#222222; border-radius:0;" ><a style="color:#f1f1f1;" ui-sref="grid">Spread Sheet</a></li>
+			<li class="list-group-item" style=" background-color:#101010;  border-color:#222222; border-radius:0;"><a style="color:#f1f1f1;" ui-sref="layout">Exhibitor Layout</a></li>
+
 	            <li class="list-group-item" ng-repeat="(id, item) in companies | orderByPriority | filter:filterText"   style=" background-color:#101010;  border-color:#222222; border-radius:0;" >
-	            <a ng-click="$spMenu.toggle()" ng-href="#/companies/{{id}}" style="color:#f1f1f1;">{{item.company}}</a>
+	            <a ng-click="$spMenu.toggle()" ng-href="#/companies/{{item.id}}" style="color:#f1f1f1;">{{item.company}}</a>
 	            </li>
 	        </ul>
 	</div>
@@ -175,11 +175,7 @@ $script([
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-				</button>
-
-				
-						<span class="icon-bar"></span>
-				
+				</button>				
 				<button class="btn btn-default navbar-btn"  ng-click="$spMenu.toggle()" ><i class="fa fa-list"></i></button>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

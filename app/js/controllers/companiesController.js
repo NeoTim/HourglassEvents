@@ -208,7 +208,7 @@ angular.module('myApp.companiesController', ['firebase', 'ui.router', 'ng-fireba
 
 }])
 
-.controller("notesController", [ '$location', '$firebase', '$scope', function($location, $firebase, $scope){
+.controller("notesController", [ '$location', '$firebase', '$scope', function($location, $firebase, $scope, syncData){
 
 	var companyUrl = $location.path();
     var Noteref  = 'http://hourglass-events.firebaseIO.com/' + companyUrl + "/notes";
@@ -238,7 +238,7 @@ angular.module('myApp.companiesController', ['firebase', 'ui.router', 'ng-fireba
 
     $scope.addNote = function(){
       var ref = new Firebase(Noteref);
-       ref.push({body: "", title: "", position: 1});
+       ref.push({body: "Notes", title: "Title", position: 1});
     };
     $scope.removeNote = function(index){
       var ref = new Firebase(Noteref);

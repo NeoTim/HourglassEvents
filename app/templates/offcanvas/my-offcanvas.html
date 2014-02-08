@@ -1,6 +1,6 @@
 <nav class="off-canvas__nav " style="z-index:30000;">
   <p><a href ng-click="offCanvas.toggle()"><i class="fa fa-list"></i></a></p>
   <ul class="nav nav-pills nav-stacked">
-  	<li ng-repeat="(id, v) in companies | orderByPriority"><a ng-href="companies/{{id}}">{{v.company}}</a></li>
+  	<li ng-repeat="v in companies | orderByPriority"><a ng-href="companies/{{v.id}}">{{v.company}}</a></li>
   </ul>
 </nav>

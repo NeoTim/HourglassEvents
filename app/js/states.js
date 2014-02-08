@@ -9,14 +9,14 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,  $urlRouterProvider) {
 
     
-    $urlRouterProvider.when("/companies", "/companies/list");
+    $urlRouterProvider.when("/", "/dashboard");
     $urlRouterProvider.otherwise("/dashboard");
     
     
 
      $stateProvider
         .state('companies', {
-            abstract: true,
+            
             authRequired: true,
             url: "/companies",
             templateUrl: "templates/companies/companies.html",
@@ -55,7 +55,7 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
         });
 
 
-
+/*
     $stateProvider
     .state('list', {
         url: "/list",
@@ -72,8 +72,7 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
         templateUrl: "editView.html",
         controller: "editCtrl"
     });   
-    //$locationProvider.html5Mode(true);
-
+*/
    
 
     $stateProvider.state('dashboard', {
@@ -81,33 +80,6 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
             templateUrl: "/templates/dashboard/index.html",
             controller: 'dashboardCtrl'
     })
-
-
-/*    $stateProvider.state('exhibitors', {
-        url: "/exhibitors",
-        templateUrl: 'templates/exhibitors/exhibitors.html',
-        controller: 'exhibitorsControl'
-        //controller: 'ExhibitorsController'
-    });
-    $stateProvider.state('exhibitors/trash', {
-        url: "/exhibitors/trash",
-        templateUrl: 'templates/exhibitors/trash.html',
-        controller: 'TrashController'
-        //controller: 'ExhibitorsController'
-    });
-    $stateProvider.state('calendar', {
-        templateUrl: 'templates/calendar/index.html',
-        controller: 'CalendarCtrl'
-        //controller: 'ExhibitorsController'
-    });
-    $stateProvider.state("exhibitors.list", {
-        templateUrl: 'templates/exhibitors/single.html',
-        controller: 'ExhibitorDetailCtrl'
-    });
-    $stateProvider.state("/exhibitors/:exhibitorId", {
-        templateUrl: 'templates/exhibitors/single.html',
-        controller: 'ExhibitorDetailCtrl'
-    });*/
 
     $stateProvider.state('chat', {
         url: "/chat",
@@ -129,5 +101,6 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
          
     });
                  //controller: 'LoginController'
+    //$locationProvider.html5Mode(true);
 
 }]);
