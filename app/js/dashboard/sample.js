@@ -120,9 +120,6 @@ angular.module('sample', [
           widgets: [{
             type: "noteList",
             title: "Notes"
-          }, {
-            type: "linklist",
-            title: "Exhibitors"
           }]
         }, {
           class: "col-md-8",

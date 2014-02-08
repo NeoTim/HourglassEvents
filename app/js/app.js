@@ -3,13 +3,30 @@
 
 // Declare app level module which depends on filters, and services
 var myApp = angular.module('myApp',
-      ['ngAnimate', 'ui.router', 
+      ['ngAnimate', 'ui.router', 'shoppinpal.mobile-menu',
          'ng-firebase', 'ui.sortable', 'angular-flip', 'firebase', 'myApp.calendar',
         'myApp.config', 'myApp.filters', 'myApp.services',
         'myApp.directives', 'myApp.siteController', 'myApp.todoController',
         'myApp.authController', 'myApp.companiesController',
         'waitForAuth', 'routeSecurity', 'myApp.states', 'sample'])
 
+
+// let's make a nav called `myOffCanvas`
+/*.controller('MyCtrl', function(offCanvas) {
+    this.toggle = offCanvas.toggle;
+})
+.controller('navCtrl', function($scope, offCanvas, syncData) {
+    $scope.companies = syncData('companies');
+    this.toggle = offCanvas.toggle;
+})
+.factory('offCanvas', function(cnOffCanvas) {
+    return cnOffCanvas({
+      controller: 'navCtrl',
+      controllerAs: 'nav',
+     container: document.getElementById('canvContent'),
+      templateUrl: 'templates/offcanvas/my-offcanvas.html'
+    })
+})*/
 
 
 

@@ -32,7 +32,7 @@
 							  		<button type="button" class="btn btn-default" ng-click="addContact()">
 									    <i class="fa fa-plus"></i> Add
 									  </button>
-							    		<div ng-repeat="(id, link) in contacts | orderBy:'name'" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
+							    		<div ng-repeat="(id, link) in contacts | orderBy:'title'" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
 										<div class="card-content {{link.color}}" style="padding:10px; " title="enable edit mode">
 									    		<h3><strong><input type="text" id="" placeholder="Name" ng-model="link.name" style="border:none; outline:none; width:100%;" ng-change="update(id, 'name', link.name)"></strong></h3>	    		
 									    		<p><input type="text" id="" placeholder="Title" ng-model="link.title" style="border:none; outline:none; width:100%;" ng-change="update(id, 'title', link.title)"></p>	    		
@@ -84,16 +84,17 @@
 				  		<button type="button" class="btn btn-default" ng-click="addNote()">
 						    <i class="fa fa-plus"></i> Add
 						</button>
-				    		<div ng-repeat="(id, link) in notes | orderBy:link.position" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
+				    		<div ng-repeat="(id, link) in notes | orderBy:title" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
 							<div class="card-content {{link.color}}" style="padding:10px; " title="enable edit mode">
 						    		<h3><strong><input type="text" id="" placeholder="Title" ng-model="link.title" style="border:none; outline:none; width:100%;" ng-change="update(id, 'title', link.title)"></strong></h3>	    		
 						    		<div contentEditable="true" id="{{link.$id}}" placeholder="Notes" ng-model="link.body" style="border:none; outline:none;" ng-change="update(id, 'body', link.body)"></div>
 						    		<br>
+
 								<div class="card-footer " style="height:15px;" >
 
 									<i ng-show="note" class="fa fa-trash-o pull-right check-element" ng-click="removeNote(id)"></i>
-									<!-- <i ng-show="note" class="fa fa-arrow-up pull-right check-element" ng-click="moveDown(id, link.position)"></i>
-									<i ng-show="note" class="fa fa-arrow-down pull-right check-element" ng-click="moveUp(id, link.position)"></i> -->
+									<i ng-show="note" class="fa fa-arrow-up pull-right check-element" ng-click="moveDown(id)"></i>
+									<i ng-show="note" class="fa fa-arrow-down pull-right check-element" ng-click="moveUp(id)"></i>
 									<span ng-show="note" class="btn-group check-element">
 									<i class="fa fa-circle" style="color: #4fa950" ng-click="update(id, 'color', 'success')"></i>
 									<i class="fa fa-circle" style="color: #15aaff" ng-click="update(id, 'color', 'primary')"></i>

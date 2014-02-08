@@ -4,7 +4,7 @@
 		    <i class="fa fa-plus"></i> Add
 		  </button>
     		<div ng-repeat="(id, link) in links | orderBy:'title'" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
-			<div class="card-content {{link.color}}" style="padding:10px; " title="enable edit mode">
+			<div class="card-content {{link.color}}" style="padding:10px; " title="{{link.title}}">
 		    		<h3><strong><input type="text" id="" placeholder="Title" ng-model="link.title" style="border:none; outline:none; width:100%;" ng-change="update(id, 'title', link.title)"></strong></h3>	    		
 		    		<div contentEditable="true" id="{{link.$id}}" placeholder="Notes" ng-model="link.body" style="border:none; outline:none;" ng-change="update(id, 'body', link.body)"></div>
 		    		<br>
@@ -26,5 +26,7 @@
     			</div>
   		</div>
 	</div>
+</div>
+
 
       

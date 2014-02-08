@@ -223,8 +223,8 @@ angular.module('myApp.companiesController', ['firebase', 'ui.router', 'ng-fireba
     $scope.moveUp = function(id, pos){
         var ref = new Firebase(Noteref + "/" + id);
        var x = pos - 1;
-        ref.child('position').set(x);
-        console.log(id);
+        ref.setPriority(1);
+        
     }
 
     $scope.moveDown = function(id, pos){

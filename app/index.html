@@ -3,7 +3,7 @@
 <head>
 		<meta charset="utf-8">
 
-
+		<meta name="viewport" content="width=device-width, initial-scale=1">
          
 		
          <link  rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css"/>
@@ -16,9 +16,10 @@
         <!-- <link  rel="stylesheet" type="text/css" href="bower_components/angular-ui/angular-ui.min.css"/> -->
          <!-- MODIFIED -->
          <link  rel="stylesheet" type="text/css" href="assets/calendar/fullcalendar.css"/>
-         <link  rel="stylesheet" type="text/css" href="assets/calendar/fullcalendar.css"/>
+        
+         
          <link  rel="stylesheet" type="text/css" href="assets/css/style.css"/>
-         <link  rel="stylesheet" type="text/css" href="assets/css/my-responsive.css"/>
+         
          <link  rel="stylesheet" type="text/css" href="assets/css/default.css"/>
          <link  rel="stylesheet" type="text/css" href="assets/css/uniform.default.css"/> 
          <link  rel="stylesheet" type="text/css" href="assets/css/plugins.css"/>
@@ -38,6 +39,8 @@
     <script type="text/javascript" src="components/jquery-ui/ui/jquery.ui.mouse.js"></script>
     <script type="text/javascript" src="components/jquery-ui/ui/jquery.ui.sortable.js"></script>
          <link  rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+          <link  rel="stylesheet" type="text/css" href="css/ng-mobile-menu.min.css"/>
+         <!-- <link  rel="stylesheet" type="text/css" href="css/topcoat-mobile-light.min.css"/> -->
          <style type="text/css">
               .nav.navbar-nav li a i {
                font-size: 20px;
@@ -136,8 +139,10 @@ $script([
 		'js/services/service.login.js',
 		'js/services/module.routeSecurity.js',
 		'js/services/module.waitForAuth.js',
+		'bower_components/angular-off-canvas/off-canvas.js',
 		'https://rawgithub.com/angular-ui/ui-sortable/master/src/sortable.js',
 		'js/libs/angular/angular-flip.js',
+		'js/libs/ng-mobile-menu.min.js',
 		'js/libs/calendar/ui-calendar.js',
 		'bower_components/angular-animate/angular-animate.min.js'
 	], function() {
@@ -149,45 +154,50 @@ $script([
 		<title>My AngularJS App</title>
 		<link rel="stylesheet" href="css/app.css">
 </head>
-<body ng-cloak-auth class="hide">
-	<div class="menuWrap">
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">Hourglass</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-							<li class="active"><a ui-sref="dashboard"><i class="fa fa-tachometer"></i></a></li>
-							<!-- <li><a ui-sref="chat"><i class="fa fa-comment"></i></a></li> -->
-							<li ng-show-auth="logout,error"><a ui-sref="login"><i class="fa fa-sign-in"></i></a></li>
-							<li ng-show-auth="login"><a ui-sref="account"><i class="fa fa-sign-out"></i></a></li>
-							<li ng-class="{ active: $state.includes('companies') }"><a ui-sref="companies.list"><i class="fa fa-th-large"></i></a></li>
-							<li ><a ui-sref="grid"><i class="fa fa-table"></i></a></li>
-							<li ><a ui-sref="layout"><i class="fa fa-sitemap"></i></a></li>
-<!-- 							<li ng-class="{ active: $state.includes('edit-companies') }"><a ui-sref="edit-companies"><i class="fa fa-group"></i> </a></li> -->
-							<li><a ui-sref="calendar"><i class="fa fa-calendar"></i></a></li>
-
-							
-					</ul>
-			</div><!-- /.navbar-collapse -->
-		</nav>
-	</div>      
-
-	<div id="wrap">
-		
-			<div ui-view  class="anim-in-out anim-fade" data-anim-speed="500"></div >
-		
+<body ng-cloak-auth >
+	<div id="sp-nav" style="overflow-y:scroll; background-color:#101010;"  ng-controller="CompaniesControl">
+		<input class="form-control" ng-model="filterText" style="margin-top:8px; height:34px; background-color:#ededed;" placeholder="Search..." />
+	        <ul class="list-group" >
+	            <li class="list-group-item" ng-repeat="(id, item) in companies | orderByPriority | filter:filterText"   style=" background-color:#101010;  border-color:#222222; border-radius:0;" >
+	            <a ng-click="$spMenu.toggle()" ng-href="#/companies/{{id}}" style="color:#f1f1f1;">{{item.company}}</a>
+	            </li>
+	        </ul>
 	</div>
-	
+	  	
 
+		
+
+<div id="sp-page" style="background-color:#e5e5e5;">		
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+				</button>
+
+				
+						<span class="icon-bar"></span>
+				
+				<button class="btn btn-default navbar-btn"  ng-click="$spMenu.toggle()" ><i class="fa fa-list"></i></button>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+					<li class="active"><a ui-sref="dashboard"><i class="fa fa-tachometer"></i></a></li>
+	
+					<li ng-show-auth="logout,error"><a ui-sref="login"><i class="fa fa-sign-in"></i></a></li>
+					<li ng-show-auth="login"><a ui-sref="account"><i class="fa fa-sign-out"></i></a></li>
+					
+					<li ><a ui-sref="grid"><i class="fa fa-table"></i></a></li>
+					<li ><a ui-sref="layout"><i class="fa fa-sitemap"></i></a></li>
+
+					<li><a ui-sref="calendar"><i class="fa fa-calendar"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	<div >
+	<div ui-view  data-anim-speed="500" style="padding-top:60px;"></div >
+</div>      
 </body>
 </html>
