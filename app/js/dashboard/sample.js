@@ -25,7 +25,11 @@
 
 angular.module('sample', [
   'adf', 'sample.widgets.news',
+<<<<<<< HEAD
   'sample.widgets.noteList',
+=======
+  'sample.widgets.weather', 'sample.widgets.noteList',
+>>>>>>> 7fc1bf9f325b601b86ada65780c76ac6495fe349
   'sample.widgets.linklist', 'LocalStorageModule', 'ng-firebase', 'firebase'
 ])
 .value('prefix', '')
