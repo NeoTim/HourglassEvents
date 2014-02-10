@@ -25,7 +25,7 @@
 
 angular.module('sample', [
   'adf', 'sample.widgets.news',
-  'sample.widgets.weather', 'sample.widgets.noteList', 
+  'sample.widgets.weather', 'sample.widgets.noteList',
   'sample.widgets.linklist', 'LocalStorageModule', 'ng-firebase', 'firebase'
 ])
 .value('prefix', '')
@@ -118,7 +118,25 @@ angular.module('sample', [
         columns: [{
           class: "col-md-4",
           widgets: [{
-            type: "noteList",
+            type: "linklist",
+            config: {
+              links: [{
+                title: "SCM-Manager",
+                href: "http://www.scm-manager.org"
+              }, {
+                title: "Github",
+                href: "https://github.com"
+              }, {
+                title: "Bitbucket",
+                href: "https://bitbucket.org"
+              }, {
+                title: "Stackoverflow",
+                href: "http://stackoverflow.com"
+              }]
+            },
+            title: "Links"
+          }, {
+            type: "weather",
             title: "Notes"
           }]
         }, {

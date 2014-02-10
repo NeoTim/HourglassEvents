@@ -130,12 +130,16 @@ angular.module('myApp.companiesController', ['firebase', 'ui.router', 'ng-fireba
 
 		var exhibitorUrl = $location.path()
 		var fireBaseUrl = "https://hourglass-events.firebaseio.com/" + exhibitorUrl + "/contacts";
-		 var exhibitorRef = new Firebase("https://hourglass-events.firebaseIO.com/" + exhibitorUrl);
+		var exhibitorRef = new Firebase("https://hourglass-events.firebaseIO.com/" + exhibitorUrl);
+		
 		  var contactRef = new Firebase(fireBaseUrl);
 		 $scope.exh = $firebase(exhibitorRef);
 
 		 $scope.title = $scope.exh.company;
-		
+
+		$scope.updateCompany = function(id, newval){
+			exhibitorRef.child('company').set(newval);
+		}
 		 
 		 $scope.removeExhibitor = function(){
 			exhibitorRef.remove();
@@ -172,6 +176,11 @@ angular.module('myApp.companiesController', ['firebase', 'ui.router', 'ng-fireba
 				};
 		};
 		 
+
+		 $scope.removeCompany = function(id){
+		 	exhibitorRef.remove();
+		 	$location.path("/dashboard");
+		 }
 				
 				// creates new incremental record
 		
@@ -217,6 +226,7 @@ angular.module('myApp.companiesController', ['firebase', 'ui.router', 'ng-fireba
     $scope.update = function(id, field, newval){
         var ref = new Firebase(Noteref + "/" + id);
         ref.child(field).set(newval);
+        ref.child('date').set(Firebase.ServerValue.TIMESTAMP)
         console.log(id);
       
     }
@@ -238,7 +248,8 @@ angular.module('myApp.companiesController', ['firebase', 'ui.router', 'ng-fireba
 
     $scope.addNote = function(){
       var ref = new Firebase(Noteref);
-       ref.push({body: "Notes", title: "Title", position: 1});
+       ref.push({body: "Notes", title: "Title", position: 1, date: Firebase.ServerValue.TIMESTAMP});
+       
     };
     $scope.removeNote = function(index){
       var ref = new Firebase(Noteref);

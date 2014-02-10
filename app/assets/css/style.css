@@ -561,6 +561,7 @@ pre.dark {
   border-color: transparent;
   margin-top: 12px;
 }
+
 .form-horizontal {
   padding: 20px 0;
 }
@@ -616,6 +617,7 @@ fieldset legend {
 .checkbox-inline label {
   font-weight: normal;
 }
+
 .bootstrap-select .btn {
   border: solid 1px #cccccc;
   padding: 7px 12px;
@@ -648,6 +650,7 @@ fieldset legend {
   -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
+
 .input-group .form-control {
   -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
@@ -1786,6 +1789,7 @@ Custom portlet tabs
 .panel-group {
   margin-bottom: 20px;
 }
+
 .btn {
   font-size: 14px;
   padding: 6px 25px;
