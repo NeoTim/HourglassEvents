@@ -33,6 +33,9 @@ var myApp = angular.module('myApp',
 })
 
 
+
+
+
 .run(['$state', '$stateParams', 'loginService', '$rootScope', 'FBURL', function($state, $stateParams, loginService, $rootScope, FBURL) {
 
        $rootScope.$state = $state;

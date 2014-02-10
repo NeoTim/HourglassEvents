@@ -1,7 +1,6 @@
-<a ui-sref="dashboard" class="back_link"><i class="fa fa-arrow-left "></i></a>
+<!-- <a ui-sref="dashboard" class="back_link"><i class="fa fa-arrow-left "></i></a> -->
 <span class="align-center">
-	<h1 >{{exh.company}}</h1>
-	<h1 ng-if="!exh.company">Please Add Exhibitor's Company</h1>
+	<h1><div contentEditable="true" id="{{exh.company}}" placeholder="Company" ng-model="exh.company" style="border:none; outline:none; " ng-change="updateCompany(exh.$id, exh.company)"></div></h1>
 
 </span>
 <hr>
@@ -50,8 +49,10 @@
 								</div>
 							</div>
 						</div>
+						<div class="btn-group " style="padding-top:20px;">
+							<button class="btn btn-danger" ng-click="removeCompany(exh.id)">Delete Company</button>
+						</div>
 					</div>
-				
 				
 			</div>
 			
@@ -69,8 +70,10 @@
 						</button>
 				    		<div ng-repeat="link in notes | orderByPriority | reverse" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
 							<div ng-if="link.title"  class="card-content {{link.color}}" style="padding:10px; " title="enable edit mode">
-						    		<div contentEditable="true" id="{{link.title}}" ng-model="link.title" style="border:none; outline:none; font-size:18px; font-weight:bold; margin-bottom:10px;"  ng-change="update(link.$id, 'title', link.title)"><div placeholder></div></div>	    		
+						    		<h3><strong><input type="text" id="" placeholder="Title" ng-model="link.title" style="border:none; outline:none; width:100%;" ng-blur="update(link.$id, 'title', link.title)"></strong></h3>	    		
 						    		<div contentEditable="true" id="{{link.$id}}" placeholder="Notes" ng-model="link.body" style="border:none; outline:none; " ng-change="update(link.$id, 'body', link.body)"></div>
+						    		<br>
+						    		<span style="color:#999999;">{{link.date | date:'MM/dd/yyyy @ h:mma'}}</span>
 						    		<br>
 
 								<div class="card-footer " style="height:15px;" >

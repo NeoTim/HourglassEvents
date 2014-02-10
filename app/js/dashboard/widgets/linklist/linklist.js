@@ -28,7 +28,7 @@ angular.module('sample.widgets.linklist', ['adf.provider', 'ng-firebase'])
   .config(function(dashboardProvider){
     dashboardProvider
       .widget('linklist', {
-        title: 'Links',
+        title: 'Companies',
         description: 'Displays a list of links',
         controller: 'linklistCtrl',
         templateUrl: 'js/dashboard/widgets/linklist/linklist.html',
@@ -38,12 +38,49 @@ angular.module('sample.widgets.linklist', ['adf.provider', 'ng-firebase'])
           controller: 'linklistEditCtrl'
         }
       });
-  }).controller('linklistCtrl', function($scope, config, syncData){
-    if (!config.links){
-      config.links = [];
-    }
-    config.links = syncData('companies');
-    $scope.links = config.links;
+  }).controller('linklistCtrl', function($scope, config, Firebase){
+
+      
+    var counterRef = new Firebase('http://hourglass-events.firebaseio.com/counters/');
+    var companyRef = new Firebase('http://hourglass-events.firebaseio.com/companies');
+    companyRef.on('value', function(snap){
+        $scope.companies = snap.val();
+    });
+    
+        
+   
+
+    $scope.addCompany = function(){
+
+      
+      
+        counterRef.child('compCount').transaction(function(currentValue) {
+              return (currentValue||0) + 1
+        }, function(err, committed, ss) {
+          if( err ) {
+            setError(err);
+          }
+              else if( committed ) {
+          // if counter update succeeds, then create record
+          // probably want a recourse for failures too
+            addRecord(ss.val()); 
+          }
+        });
+        function addRecord(id) {
+          console.log(id);
+          setTimeout(function() {
+            var val = "A Company-" + id;
+            companyRef.child(id).set({id: id, company: val}, function(err) {
+              err && setError(err);
+            });  
+            
+          });
+        };
+    };
+
+
+
+    
   }).controller('linklistEditCtrl', function($scope){
     function getLinks(){
       if (!$scope.config.links){
