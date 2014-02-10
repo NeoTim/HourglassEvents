@@ -28,8 +28,6 @@ angular.module('sample', [
 
   'sample.widgets.noteList',
 
-  'sample.widgets.weather', 'sample.widgets.noteList',
-
   'sample.widgets.linklist', 'LocalStorageModule', 'ng-firebase', 'firebase'
 ])
 .value('prefix', '')
