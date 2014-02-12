@@ -2,13 +2,14 @@
 
 
 // Declare app level module which depends on filters, and services
-var myApp = angular.module('myApp',
-      ['ngAnimate', 'ui.router', 'shoppinpal.mobile-menu',
-         'ng-firebase', 'ui.sortable', 'angular-flip', 'firebase', 'myApp.calendar',
-        'myApp.config', 'myApp.filters', 'myApp.services',
-        'myApp.directives', 'myApp.siteController', 'myApp.todoController',
-        'myApp.authController', 'myApp.companiesController',
-        'waitForAuth', 'routeSecurity', 'myApp.states', 'sample'])
+var myApp = angular.module('myApp', [
+      'ngAnimate', 'ngGrid', 'ui.router',  'shoppinpal.mobile-menu',
+      'ng-firebase', 'ui.sortable', 'firebase', 'myApp.states',
+      'myApp.notes',
+      'myApp.config', 'myApp.filters', 'myApp.services',
+      'myApp.directives', 'myApp.siteController', 'myApp.todoController',
+      'myApp.authController', 'myApp.companies',
+      'waitForAuth',  'myApp.states', 'sample'])
 
 
 // let's make a nav called `myOffCanvas`
@@ -57,7 +58,77 @@ var myApp = angular.module('myApp',
      
 
 
-  }]);
+  }])
+
+.controller('compsController', function($timeout, $firebase, $scope, orderByPriorityFilter) {
+    /*$scope.myData = [{name: "Moroni", age: 50},
+                     {name: "Tiancum", age: 43},
+                     {name: "Jacob", age: 27},
+                     {name: "Nephi", age: 29},
+                     {name: "Enos", age: 34}];
+*/
+var fb = new Firebase("http://hourglass-events.firebaseio.com/companies");
+      
+      $scope.data = $firebase(fb);
+      //var myData = $firebase(fb);
+      $scope.myData = [];
+
+     /* fb.on('value' ,function(snap){
+            $timeout(function(){
+              $scope.myData = snap.val();
+            });
+      });
+      fb.on('child_added', function(snap){
+          $timeout(function(){
+              $scope.myData = snap.val();
+            });
+      });*/
+      $scope.$watchCollection('data', function() {
+            $scope.myData = orderByPriorityFilter($scope.data);
+     });
+   
+
+      $scope.updateEntity = function(col,row){
+        //fb.child(row.entity.id).child(col.field).set(row.entity.$id);
+            //var ref = new Firebase(fb + "/" + row.entity.id + "/" + col.field);
+            //  myData.$child(row.entity.id).$child(col.field).$set(row.entity.$id);
+            $scope.data.$save(row.entity.$id);
+            //console.log(row.entity.$id + " = " + col.field);
+            console.log(row.entity.id);
+      };
+      /*$scope.$on('ngGridEventEndCellEdit',function(value){
+                    $scope.data.$set(value);
+                  
+                });*/
+      
+      $scope.gridOptions = { 
+            data: 'myData',
+            enableCellSelection: true,
+            enableRowSelection: false,
+            enableCellEditOnFocus: true,
+            showGroupPanel: true,
+            jqueryUIDraggable: true,
+          
+          
+          
+
+            columnDefs: [
+                  {field: 'company', displayName: 'Company', enableCellEdit: true, editableCellTemplate: '<input ng-change="updateEntity(col, row)" ng-class="\'colt\' + col.index" type="text" ng-input="COL_FIELD" ng-model="COL_FIELD" />'},
+                  {field:'committed', displayName:'Committed', enableCellEdit: true, editableCellTemplate: '<input ng-change="updateEntity(col, row)"  ng-class="\'colt\' + col.index" type="checkbox" ng-input="COL_FIELD" ng-model="COL_FIELD" />' },
+                  {field:'contract', displayName:'Contract', enableCellEdit: true, editableCellTemplate: '<input ng-change="updateEntity(col, row)"  ng-class="\'colt\' + col.index" type="checkbox" ng-input="COL_FIELD" ng-model="COL_FIELD" />' },
+                  {field: 'forcast_revenue', displayName: 'Forcast Revenue', enableCellEdit: true, editableCellTemplate: '<input ng-change="updateEntity(col, row)" ng-class="\'colt\' + col.index" type="text" ng-input="COL_FIELD" ng-model="COL_FIELD" />'},
+                  {field: 'payment_method', displayName: 'Payment Type', enableCellEdit: true, editableCellTemplate: '<input ng-change="updateEntity(col, row)" ng-class="\'colt\' + col.index" type="text" ng-input="COL_FIELD" ng-model="COL_FIELD" />'},
+                  {field: 'deposit_due', displayName: 'Deposit Due', enableCellEdit: true, editableCellTemplate: '<input ng-change="updateEntity(col, row)" ng-class="\'colt\' + col.index" type="text" ng-input="COL_FIELD" ng-model="COL_FIELD" />'},
+                  {field: 'amount_paid', displayName: 'Amount Paid', enableCellEdit: true, editableCellTemplate: '<input ng-change="updateEntity(col, row)" ng-class="\'colt\' + col.index" type="text" ng-input="COL_FIELD" ng-model="COL_FIELD" />'},
+                  {field: 'total_due', displayName: 'Total Dues', enableCellEdit: true, editableCellTemplate: '<input ng-change="updateEntity(col, row)" ng-class="\'colt\' + col.index" type="text" ng-input="COL_FIELD" ng-model="COL_FIELD" />'},
+                  {field: 'plevel_proposed', displayName: 'Patner Level Proposed', enableCellEdit: true, editableCellTemplate: '<input ng-change="updateEntity(col, row)" ng-class="\'colt\' + col.index" type="text" ng-input="COL_FIELD" ng-model="COL_FIELD" />'},
+                  {field: 'plevel', displayName: 'Patner Level', enableCellEdit: true, editableCellTemplate: '<input ng-change="updateEntity(col, row)" ng-class="\'colt\' + col.index" type="text" ng-input="COL_FIELD" ng-model="COL_FIELD" />'},
+                  {field: 'booth', displayName: 'Booth #', enableCellEdit: true, editableCellTemplate: '<input ng-change="updateEntity(col, row)" ng-class="\'colt\' + col.index" type="text" ng-input="COL_FIELD" ng-model="COL_FIELD" />'}
+                  
+                  ]
+            };
+});
+
 
 
 function s4() {
@@ -85,3 +156,4 @@ myApp.factory(name, function myService(angularFire) {
 }
 
 registerFirebaseService('itemService','https://hourglass-events.firebaseio.com/');
+

@@ -1,99 +1,32 @@
 "use strict";
 
-angular.module('myApp.routes', ['ui.router'])
-
-	 // configure views; the authRequired parameter is used for specifying pages
-	 // which should only be available while logged in
+angular.module('myApp.routes', ['ngRoute', 'firebase'])
 
 
-.run(function ($rootScope, $state, $stateParams) {
-    	$rootScope.$state = $state;
-    	$rootScope.$stateParams = $stateParams;
-})
 
-.config(['$stateProvider', '$urlRoutProvider', function($stateProvider, $urlRoutProvider) {
 
-	 
 
-	 $stateProvider
-	    	.state('companies', {
-	        	url: "/companies",
-			templateUrl: "templates/companies/companies.html",
-	        	controller: "companiesController"
-	})
-	.state('edit-companies', {
-	      url: "/edit-companies",
-	      templateUrl: "templates/companies/editCompanyView.html",
-	      controller: "editCompanyCtrl"
-	})    
-	.state('edit-companies.company', {
-	      url: "/:id",
-	      templateUrl: "editView.html",
-	      controller: "editCtrl"
-	});   
+.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
-	$urlRoutProvider.when("", "/dashboard")
-	$urlRoutProvider.when("/home", "/login")
-	$urlRoutProvider.when("/", "/home")
-
-	$urlRoutProvider.otherwise("/dashboard");
-
-	$stateProvider.state('dashboard', {
-			url: "/dashboard",
-			templateUrl: "/templates/dashboard/dashboard.html",
-			controller: 'DashboardController'
-	})
-	$stateProvider.state('home', {
-		url:"/home",
-		templateUrl: "partials/home.html",
-		controller: "HomeCrtl"
-	})
-
-	$stateProvider.state('exhibitors', {
-		url: "/exhibitors",
-		templateUrl: 'templates/exhibitors/exhibitors.html',
-		controller: 'exhibitorsControl'
-		//controller: 'ExhibitorsController'
-	});
-	$stateProvider.state('exhibitors/trash', {
-		url: "/exhibitors/trash"
-		templateUrl: 'templates/exhibitors/trash.html',
-		controller: 'TrashController'
-		//controller: 'ExhibitorsController'
-	});
-	$stateProvider.state('calendar', {
-		templateUrl: 'templates/calendar/index.html',
-		controller: 'CalendarCtrl'
-		//controller: 'ExhibitorsController'
-	});
-	$stateProvider.state("exhibitors.list", {
-		templateUrl: 'templates/exhibitors/single.html',
-		controller: 'ExhibitorDetailCtrl'
-	});
-	$stateProvider.state("/exhibitors/:exhibitorId", {
-		templateUrl: 'templates/exhibitors/single.html',
-		controller: 'ExhibitorDetailCtrl'
+	$routeProvider.when('/dashboard', {
+		templateURL: 'templates/dashboard/index.html',
+		controller: 'dashboardCtrl'
 	});
 
-	$stateProvider.state('chat', {
-		url: "/chat",
-		 templateUrl: 'partials/chat.html',
-		 controller: 'ChatCtrl'
+	$routeProvider.when('/grid', {
+		template: '<iframe style="width:100%; min-height:100%; margin-bottom:0;" src="https://docs.google.com/a/hisimagination.com/spreadsheet/ccc?key=0AkMcfRC8dZgidE1oMWExZlBrSVo0emlkakEwX1JTdkE&usp=sharing"></iframe>'
 	});
 
-	$stateProvider.state('account', {
-		url: "/account",
-		 authRequired: true, // must authenticate before viewing this page
-		 templateUrl: 'partials/account.html',
-		 controller: 'AccountCtrl'
+	$routeProvider.when('/companies', {
+		templateURL: 'templates/companies/index.html',
+		controller: 'compsController'
 	});
 
-	$stateProvider.state('login', {
-		url "/login",
-		 templateUrl: 'partials/login.html',
-		 controller: 'LoginCtrl'
-		 
+	$routeProvider.when('/companies/:companyId', {
+		templateURL: 'templates/companies/index.html',
+		controller: 'compCtrl'
 	});
-				 //controller: 'LoginController'
 
+	$locationProvider.html5Mode(true);
+	$routeProvider.otherwise({ redirectTo: '/dashboard' })
 }]);
