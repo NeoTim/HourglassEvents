@@ -46,13 +46,14 @@ angular.module('sample.widgets.linklist', ['adf.provider', 'ng-firebase'])
     companyRef.on('value', function(snap){
         $scope.companies = snap.val();
     });
+    console.log($scope.companies);
     
         
    
-
+   var errId = 0;
     $scope.addCompany = function(){
-
-      
+       var errId = 0;
+   
       
         counterRef.child('compCount').transaction(function(currentValue) {
               return (currentValue||0) + 1

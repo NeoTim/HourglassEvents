@@ -16,22 +16,19 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
 
      $stateProvider
         .state('companies', {
-            
-            authRequired: true,
+            abstract: true,
             url: "/companies",
-            templateUrl: "templates/companies/companies.html",
-            controller: "CompaniesControl"
+            templateUrl: "templates/company/companies.html"
         })
         .state('companies.list', {
             url: "/list",
-            authRequired: true,
-            templateUrl: "templates/companies/companyList.html",
+            templateUrl: "templates/company/companies.list.html",
+             controller: "compsController"
         })
         .state('companies.detail', {
             url: '/:id',
-            authRequired: true,
-            templateUrl: "templates/companies/single.html",
-            controller: 'CompanyDetailCtrl'
+            templateUrl: "templates/company/companies.detail.html",
+            controller: 'companyDetail'
         });
     $stateProvider
         .state('layout', {
@@ -44,6 +41,7 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
     $stateProvider
         .state('grid', {
             url: '/grid',
+           
             template: '<iframe style="width:100%; min-height:100%; margin-bottom:0;" src="https://docs.google.com/a/hisimagination.com/spreadsheet/ccc?key=0AkMcfRC8dZgidE1oMWExZlBrSVo0emlkakEwX1JTdkE&usp=sharing"></iframe>'
         });
 
