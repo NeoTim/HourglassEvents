@@ -14,13 +14,25 @@ angular.module('myApp.companies', ['firebase', 'ui.router'])
 		var fireBaseUrl = "https://hourglass-events.firebaseio.com/" + exhibitorUrl + "/contacts";
 		var exhibitorRef = new Firebase("https://hourglass-events.firebaseIO.com/" + exhibitorUrl);
 		
+
 		  var contactRef = new Firebase(fireBaseUrl);
 		 $scope.exh = $firebase(exhibitorRef);
 
 		 $scope.title = $scope.exh.company;
-
+		$scope.levels = [
+		    {name:'Exhibitor', plevel:'null'},
+		    {name:'Bronze', plevel:'bronze'},
+		    {name:'Silver', plevel:'silver'},
+		    {name:'Gold', plevel:'gold'},
+		    {name:'Platinum', plevel:'platinum'}
+		  ];
+		  
 		$scope.updateCompany = function(id, newval){
 			exhibitorRef.child('company').set(newval);
+		}
+
+		$scope.updatePlevel = function(id, newval){
+			exhibitorRef.child('plevel').set(newval);
 		}
 		 
 		 $scope.removeExhibitor = function(){
@@ -135,6 +147,49 @@ angular.module('myApp.companies', ['firebase', 'ui.router'])
     };
     $scope.removeNote = function(index){
       var ref = new Firebase(Noteref);
+      ref.child(index).remove();
+    };
+
+
+
+  
+
+}])
+.controller("companyPackage", [ '$location', '$firebase', '$scope', function($location, $firebase, $scope, syncData){
+
+	var companyUrl = $location.path();
+    var packageRef  = 'http://hourglass-events.firebaseIO.com/' + companyUrl + "/package";
+    $scope.package = $firebase(new Firebase(packageRef));
+
+    $scope.update = function(id, field, newval){
+        var ref = new Firebase(packageRef + "/" + id);
+        ref.child(field).set(newval);
+        console.log(id);
+      
+    }
+    $scope.moveUp = function(id, pos){
+        var ref = new Firebase(packageRef + "/" + id);
+       var x = pos - 1;
+        ref.setPriority(1);
+        
+    }
+
+    $scope.moveDown = function(id, pos){
+        var ref = new Firebase(packageRef + "/" + id);
+        var x = pos +1;
+        	ref.child('position').set(x);
+        console.log(id);
+      
+    }
+
+
+    $scope.addItem = function(){
+      var ref = new Firebase(packageRef);
+       ref.push({body: "Details", title: "Title", price: "price"});
+       
+    };
+    $scope.removeItem = function(index){
+      var ref = new Firebase(packageRef);
       ref.child(index).remove();
     };
 

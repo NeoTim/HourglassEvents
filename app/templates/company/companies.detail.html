@@ -4,17 +4,21 @@
 
 </span>
 <hr>
+
+
 <div class="row">
-	<div class="col-md-12" >
+	
 		<div class="col-md-3">
 			<div class="row"  >
-					<div class="col-md-12" ng-controller="companyContacts">
+				<div class="col-md-12" ng-controller="companyContacts">
+					
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<div class="panel-title">Contacts</div>
 							</div>
-							<div class="pane-body">
-							  	<div class="col-md-12" style="padding:10px; background-color:#f1f1f1;">
+							<div class="pane-body" style="padding:10px; background-color:#f1f1f1;">
+
+							  	
 							  		<button type="button" class="btn btn-default" ng-click="addContact()">
 									    <i class="fa fa-plus"></i> Add
 									  </button>
@@ -46,14 +50,71 @@
 											
 							    			</div>
 							  		</div>
-								</div>
+								
 							</div>
 						</div>
 						
 					</div>
 				
 			</div>
-			
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default" ng-controller="companyPackage">
+						<div class="panel-heading">
+							<div class="panel-title">Package</div>
+						</div>
+						<div class="pane-body" style="padding:10px; background-color:#f1f1f1;">
+						  	
+						  		<button type="button" class="btn btn-default" ng-click="addItem()">
+								    <i class="fa fa-plus"></i> Add
+								</button>
+						    		<div ng-repeat="item in package | orderByPriority | reverse" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
+									<div ng-if="item.title"  class="card-content {{item.color}}" style="padding:10px; " title="enable edit mode">
+								    		<h3><strong><input type="text" id="" placeholder="Title" ng-model="item.title" style="border:none; border-bottom:1px solid #e5e5e5; outline:none; width:100%;" ng-blur="update(item.$id, 'title', item.title)"></strong></h3>	    		
+								    		<div contentEditable="true" id="{{item.body.$id}}" placeholder="Notes" ng-model="item.body" style="border:none; border-bottom:1px solid #e5e5e5; outline:none; " ng-change="update(item.$id, 'body', item.body)"></div>
+								    		<br>
+								    		<div contentEditable="true" id="{{item.price.$id}}" placeholder="Price" 
+								    				ng-model="item.price"
+								    				style="border:none; border-bottom:1px solid #e5e5e5; outline:none;" 
+								    				ng-change="update(item.$id, 'price', item.price)">
+										</div>
+								    		<br>
+
+										<div class="card-footer " style="height:15px;" >
+
+											<i ng-show="note" class="fa fa-trash-o pull-right check-element" ng-click="removeItem(item.$id)"></i>
+											<i ng-show="note" class="fa fa-arrow-up pull-right check-element" ng-click="moveDown(item.$id)"></i>
+											<i ng-show="note" class="fa fa-arrow-down pull-right check-element" ng-click="moveUp(item.$id)"></i>
+											<span ng-show="note" class="btn-group check-element">
+											<i class="fa fa-circle" style="color: #4fa950" ng-click="update(item.$id, 'color', 'success')"></i>
+											<i class="fa fa-circle" style="color: #15aaff" ng-click="update(item.$id, 'color', 'primary')"></i>
+											<i class="fa fa-circle" style="color: #ea4519" ng-click="update(item.$id, 'color', 'danger')"></i>
+											<i class="fa fa-circle" style="color: #ef9e2a" ng-click="update(item.$id, 'color', 'warning')"></i>
+											<i class="fa fa-circle" style="color: #98caf3" ng-click="update(item.$id, 'color', 'info')"></i>
+											<i class="fa fa-circle" style="color: #ffffff" ng-click="update(item.$id, 'color', 'default')"></i>
+											</span>
+											
+											    
+										</div>
+										
+						    			</div>
+						  		</div>
+						  	
+						</div>
+					</div>
+				<br />
+				<label class="control-label">Partner Level</label>
+				<select class="form-control "  ng-model="exh.plevel" ng-change="updatePlevel(exh.plevel, exh.plevel)">
+					<option value="false">None</option>
+					<option value="false">Exhibitor</option>
+					<option value="Bronze">Bronze</option>
+					<option value="Silver">Silver</option>
+					<option value="Gold">Gold</option>
+					<option value="Platinum">Platinum</option>
+				</select>
+				</div>
+			</div>
 		</div>
 		<div class="col-md-4">
 			
@@ -61,13 +122,13 @@
 				<div class="panel-heading">
 					<div class="panel-title">Notes</div>
 				</div>
-				<div class="pane-body">
-				  	<div class="col-md-12" style="padding:10px; background-color:#f1f1f1;">
+				<div class="pane-body" style="padding:10px; background-color:#f1f1f1;">
+				  	
 				  		<button type="button" class="btn btn-default" ng-click="addNote()">
 						    <i class="fa fa-plus"></i> Add
 						</button>
 				    		<div ng-repeat="link in notes | orderByPriority | reverse" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
-							<div ng-if="link.title"  class="card-content {{link.color}}" style="padding:10px; " title="enable edit mode">
+							<div ng-if="link.title || link.body"  class="card-content {{link.color}}" style="padding:10px; " title="enable edit mode">
 						    		<h3><strong><input type="text" id="" placeholder="Title" ng-model="link.title" style="border:none; outline:none; width:100%;" ng-blur="update(link.$id, 'title', link.title)"></strong></h3>	    		
 						    		<div contentEditable="true" id="{{link.$id}}" placeholder="Notes" ng-model="link.body" style="border:none; outline:none; " ng-change="update(link.$id, 'body', link.body)"></div>
 						    		<br>
@@ -93,7 +154,7 @@
 								
 				    			</div>
 				  		</div>
-				  	</div>
+				  	
 				</div>
 			</div>
 			
@@ -147,8 +208,9 @@
 		</div>
 
 
-	</div>
+	
 </div>
 <div class="col-md-12 " style="padding-top:20px;" style="margin-bottom:0px; position:absolute; bottom:0;">
 	<button class="btn btn-danger pull-right" ng-click="removeCompany(exh.id)">Delete Company</button>
+	
 </div>

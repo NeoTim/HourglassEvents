@@ -12,6 +12,13 @@ footer {
   padding: 30px 0;
 }
 
+  .row-offcanvas {
+    
+    transition: all .4s ease 0s;
+    -webkit-transition: all .4s ease 0s;
+    -moz-transition: all .4s ease 0s;
+  }
+
 /*
  * Off Canvas
  * --------------------------------------------------

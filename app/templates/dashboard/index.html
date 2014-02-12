@@ -3,10 +3,16 @@
 <adf-dashboard name="{{name}}" structure="4-8" adf-model="model" ng-cloak />
 
 </div> -->
+<div ng-controller="companiesCtrl">
 <div class="well">
-	<h1>Welcome</h1>
+	<div class="row">
+		<div class="col-md-2"><h1>Sponsors</h1></div>
+		<div class="col-md-10">
+			<a ng-repeat="item in companies | orderByPriority" class="btn btn-primary btn-sm" ng-if="item.plevel"  ng-href="#/companies/{{item.id}}">{{item.company}}</a>
+		</div>
+	</div>
 </div>
-<div class="row" ng-controller="companiesCtrl">
+<div class="row" >
 	<div class="col-6 col-md-6">
 		<div class="linklist" ng-controller="notesCtrl" style="">
 		  	<div class="panel panel-default">
@@ -100,4 +106,5 @@
 	</div><!--/span-->
 	
 	
+</div>
 </div>
