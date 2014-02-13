@@ -3,13 +3,11 @@
 
 // Declare app level module which depends on filters, and services
 var myApp = angular.module('myApp', [
-      'ngAnimate', 'ngGrid', 'ui.router',  'shoppinpal.mobile-menu',
-      'ng-firebase', 'ui.sortable', 'firebase', 'myApp.states',
-      'myApp.notes',
-      'myApp.config', 'myApp.filters', 'myApp.services',
+      'ngAnimate', 'ngGrid', 'ui.router','ui.sortable', 'firebase', 'myApp.states',
+      'myApp.notes','myApp.config', 'myApp.filters', 'myApp.services',
       'myApp.directives', 'myApp.siteController', 'myApp.todoController',
       'myApp.authController', 'myApp.companies',
-      'waitForAuth',  'myApp.states', 'sample'])
+      'waitForAuth',  'myApp.states'])
 
 
 // let's make a nav called `myOffCanvas`

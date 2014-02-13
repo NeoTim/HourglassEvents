@@ -1,8 +1,0 @@
-<div class="linklist" style="padding:10px;">
-<button class="btn btn-default" ng-click="addCompany()"><i class="fa fa-plus"> Company</i></button>
-  <div class="list-group" style="overflow:scroll; max-height:400px; margin-top:10px;">
-    
-      <a  class="list-group-item" ng-repeat="co in companies | orderBy:'company'" ng-href="#/companies/{{co.id}}">{{co.company}}</a>
-    
-  </div>
-</div>

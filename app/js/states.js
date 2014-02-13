@@ -45,38 +45,9 @@ angular.module('myApp.states', ['ngAnimate', 'ui.router',])
             template: '<iframe style="width:100%; min-height:100%; margin-bottom:0;" src="https://docs.google.com/a/hisimagination.com/spreadsheet/ccc?key=0AkMcfRC8dZgidE1oMWExZlBrSVo0emlkakEwX1JTdkE&usp=sharing"></iframe>'
         });
 
-    $stateProvider
-        .state('calendar', {
-            url: '/calendar',
-            templateUrl: 'templates/calendar/index.html',
-            controller: 'CalendarCtrl'
-        });
-
-
-/*
-    $stateProvider
-    .state('list', {
-        url: "/list",
-        templateUrl: "listView.html",
-        controller: "listCtrl"
-    })
-    .state('items', {
-        url: "/items",
-        templateUrl: "itemsView.html",
-        controller: "itemsCtrl"
-    })    
-    .state('list.item', {
-        url: "/:id",
-        templateUrl: "editView.html",
-        controller: "editCtrl"
-    });   
-*/
-   
-
     $stateProvider.state('dashboard', {
             url: "/dashboard",
-            templateUrl: "/templates/dashboard/index.html",
-            controller: 'dashboardCtrl'
+            templateUrl: "/templates/dashboard.html"
     })
 
     $stateProvider.state('chat', {
