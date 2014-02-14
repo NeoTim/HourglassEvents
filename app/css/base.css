@@ -97,7 +97,7 @@ input.todo[type="checkbox"] {
 	position: relative;
 	margin: 0;
 	width: 100%;
-	font-size: 24px;
+	font-size: 18px;
 	font-family: inherit;
 	line-height: 1.4em;
 	border: 0;
@@ -210,7 +210,7 @@ label[for='todo_toggle-all'] {
 	content: '✔';
 	/* 40 + a couple of pixels visual adjustment */
 	line-height: 43px;
-	font-size: 20px;
+	font-size: 18px;
 	color: #d9d9d9;
 	text-shadow: 0 -1px 0 #bfbfbf;
 }
@@ -329,7 +329,7 @@ label[for='todo_toggle-all'] {
 }
 
 #todo_filters li a.selected {
-	font-weight: bold;
+	font-weight: 200;
 }
 
 #todo_clear-completed {

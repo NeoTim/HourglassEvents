@@ -5,8 +5,7 @@
 </div> -->
 <div ng-controller="companiesCtrl">
 <div class="well">
-	<div class="row">
-		<div class="col-md-2"><h1>Sponsors</h1></div>
+	<div class="nav navbar">
 		<div class="col-md-10">
 			<a ng-repeat="item in companies | orderByPriority" class="btn btn-primary btn-sm" ng-if="item.plevel"  ng-href="#/companies/{{item.id}}">{{item.company}}</a>
 		</div>

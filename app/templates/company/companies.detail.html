@@ -1,20 +1,44 @@
 <!-- <a ui-sref="dashboard" class="back_link"><i class="fa fa-arrow-left "></i></a> -->
 <span class="align-center">
 	<h1><div contentEditable="true" id="{{exh.company}}" placeholder="Company" ng-model="exh.company" style="border:none; outline:none; " ng-change="updateCompany(exh.$id, exh.company)"></div></h1>
+<div ng-controller="ModalDemoCtrl">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3>Im a modal!</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a href ng-click="selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
 
+    <button class="btn btn-default pull-right" ng-click="open()">Add Blocks</button>
+</div>
 </span>
+
 <hr>
+
 
 
 <div class="row">
 	
 		<div class="col-md-3">
-			<div class="row"  >
+			<div ng-model="contactsPanel" ng-mouseenter="contactsPanel = true" ng-mouseleave="contactsPanel = false" class="row" ng-if="exh.page.Contacts == true" >
 				<div class="col-md-12" ng-controller="companyContacts">
 					
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<div class="panel-title">Contacts</div>
+								<div class="panel-title">Contacts
+								<a href class="check-element pull-right" ng-show="contactsPanel" ng-click="removePage('Contacts')"><i class="fa fa-trash-o"></i></a>
+								</div>
 							</div>
 							<div class="pane-body" style="padding:10px; background-color:#f1f1f1;">
 
@@ -54,15 +78,71 @@
 							</div>
 						</div>
 						
-					</div>
+				</div>
 				
 			</div>
-			<br>
+			<div ng-model="adsPanel" ng-mouseenter="adsPanel = true" ng-mouseleave="adsPanel = false" ng-if="exh.page.MTS == true" class="panel panel-default" ng-controller="companyAds" >
+						<div class="panel-heading">
+							<div class="panel-title">MTS ads
+								<a href class="check-element pull-right" ng-show="adsPanel" ng-click="removePage('MTS')"><i class="fa fa-trash-o"></i></a>
+							</div>
+						</div>
+						<div class="pane-body" style="padding:10px; background-color:#f1f1f1;">
+							
+							<button type="button" class="btn btn-default" ng-click="addAds()">
+								    <i class="fa fa-plus"></i> Add
+								</button>
+						    		<div ng-repeat="item in ads | orderByPriority | reverse" style="padding-top:10px;" ng-mouseenter="note = true" ng-mouseleave="note = false">
+									<div ng-if="item.$id" class="card-content {{item.color}}" style="padding:10px; " title="enable edit mode">
+								    		<h3><strong><input type="text" id="" placeholder="Title" ng-model="item.title" style="border:none; border-bottom:1px solid #e5e5e5; outline:none; width:100%;" ng-blur="update(item.$id, 'title', item.title)"></strong></h3>	    		
+								    		<div contentEditable="true" id="{{item.body.$id}}" placeholder="Notes" ng-model="item.body" style="border:none; border-bottom:1px solid #e5e5e5; outline:none; " ng-change="update(item.$id, 'body', item.body)"></div>
+								    		
+										<br />
+										<label class="control-label">Issue Date</label>
+										<select class="form-control "  ng-model="item.adDate" ng-change="updateAdDate(item.$id, item.adDate)">
+											<option value="false">None</option>
+											<option value="March/April">March/April</option>
+											<option value="May/June">May/June</option>
+											<option value="July/Aug">July/Aug</option>
+											<option value="Sept/Oct">Sept/Oct</option>
+											<option value="Nov/Dec">Nov/Dec</option>
+										</select>
+								    		<br />
+								    		<label class="control-label">Due date:   {{item.dueDate}}</label>
+								    		<br />
+								    		<label class="control-label">Ad Status</label><br />
+								    		<div class="btn-group">
+									        <button type="button" class="btn btn-default btn-sm" ng-model="item.status" ng-change="updateStatus(item.$id, item.status)" btn-radio="'reminded'">Reminder</button>
+									        <button type="button" class="btn btn-default btn-sm" ng-model="item.status" ng-change="updateStatus(item.$id, item.status)" btn-radio="'received'">Ad Received</button>
+									        <button type="button" class="btn btn-default btn-sm" ng-model="item.status" ng-change="updateStatus(item.$id, item.status)" btn-radio="'sent'">Ad Sent</button>
+									    </div>
+									    <br />
+										<div class="card-footer " style="height:15px;" >
+
+											<i ng-show="note" class="fa fa-trash-o pull-right check-element" ng-click="removeAds(item.$id)"></i>
+											<!-- <span ng-show="note" class="btn-group check-element">
+											<i class="fa fa-circle" style="color: #4fa950" ng-click="update(item.$id, 'color', 'success')"></i>
+											<i class="fa fa-circle" style="color: #15aaff" ng-click="update(item.$id, 'color', 'primary')"></i>
+											<i class="fa fa-circle" style="color: #ea4519" ng-click="update(item.$id, 'color', 'danger')"></i>
+											<i class="fa fa-circle" style="color: #ef9e2a" ng-click="update(item.$id, 'color', 'warning')"></i>
+											<i class="fa fa-circle" style="color: #98caf3" ng-click="update(item.$id, 'color', 'info')"></i>
+											<i class="fa fa-circle" style="color: #ffffff" ng-click="update(item.$id, 'color', 'default')"></i>
+											</span> -->
+											
+											    
+										</div>
+										
+						    			</div>
+						  		</div>
+						</div>
+					</div>
 			<div class="row">
 				<div class="col-md-12">
-					<div class="panel panel-default" ng-controller="companyPackage">
+					<div ng-model="packagesPanel" ng-mouseenter="packagesPanel = true" ng-mouseleave="packagesPanel = false" ng-if="exh.page.Packages == true" class="panel panel-default" ng-controller="companyPackage">
 						<div class="panel-heading">
-							<div class="panel-title">Package</div>
+							<div class="panel-title">Packages
+							<a href class="check-element pull-right" ng-show="packagesPanel" ng-click="removePage('Packages')"><i class="fa fa-trash-o"></i></a>
+							</div>
 						</div>
 						<div class="pane-body" style="padding:10px; background-color:#f1f1f1;">
 						  	
@@ -103,24 +183,35 @@
 						  	
 						</div>
 					</div>
-				<br />
-				<label class="control-label">Partner Level</label>
-				<select class="form-control "  ng-model="exh.plevel" ng-change="updatePlevel(exh.plevel, exh.plevel)">
-					<option value="false">None</option>
-					<option value="false">Exhibitor</option>
-					<option value="Bronze">Bronze</option>
-					<option value="Silver">Silver</option>
-					<option value="Gold">Gold</option>
-					<option value="Platinum">Platinum</option>
-				</select>
+					
+					<div ng-model="partnerPanel" ng-mouseenter="partnerPanel = true" ng-mouseleave="partnerPanel = false" ng-if="exh.page.Partner == true" class="panel panel-default" >
+						<div class="panel-heading">
+							<div class="panel-title">Partner Level
+								<a href class="check-element pull-right" ng-show="partnerPanel" ng-click="removePage('Partner')"><i class="fa fa-trash-o"></i></a>
+							</div>
+						</div>
+						<div class="pane-body" style="padding:10px; background-color:#f1f1f1;">
+							
+							<select class="form-control "  ng-model="exh.plevel" ng-change="updatePlevel(exh.plevel, exh.plevel)">
+								<option value="false">None</option>
+								<option value="false">Exhibitor</option>
+								<option value="Bronze">Bronze</option>
+								<option value="Silver">Silver</option>
+								<option value="Gold">Gold</option>
+								<option value="Platinum">Platinum</option>
+							</select>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
 			
-			<div class="panel panel-default" ng-controller="companyNotes">
+			<div ng-model="notesPanel" ng-mouseenter="notesPanel = true" ng-mouseleave="notesPanel = false" ng-if="exh.page.Notes == true" class="panel panel-default" ng-controller="companyNotes">
 				<div class="panel-heading">
-					<div class="panel-title">Notes</div>
+					<div class="panel-title">Notes
+						<a href class="check-element pull-right" ng-show="notesPanel" ng-click="removePage('Notes')"><i class="fa fa-trash-o"></i></a>
+					</div>
 				</div>
 				<div class="pane-body" style="padding:10px; background-color:#f1f1f1;">
 				  	
@@ -161,48 +252,54 @@
 
 		</div>
 		<div class="col-md-5">
-			<div class="col-md-12" style="padding-top:60px;">
-			<section id="todoapp" ng-controller="todoController">
-				<header id="todo_header">
-					<h1>todos</h1>
-					<form id="todo-form" ng-submit="addTodo()">
-						<input class="todo" id="new-todo" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
-					</form>
-				</header>
-				<section id="todo_main" ng-show="totalCount" ng-cloak>
-					<input class="todo" id="todo_toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
-					<label for="todo_toggle-all">Mark all as complete</label>
-					<ul id="todo-list">
-						<li ng-repeat="(id, todo) in todos | todoFilter" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
-							<div class="view">
-								<input class="toggle todo" type="checkbox" ng-model="todo.completed" ng-change="todos.$save(id)">
-								<p><label ng-dblclick="editTodo(id)">{{todo.title}}</label></p>
-								<button class="destroy todo" ng-click="removeTodo(id)"></button>
-							</div>
-							<form ng-submit="doneEditing(id)">
-								<input class="edit todo" ng-model="todo.title" todo-escape="revertEditing(id)" todo-blur="doneEditing(id)" todo-focus="todo == editedTodo">
+			<div ng-model="todosPanel" ng-mouseenter="todosPanel = true" ng-mouseleave="todosPanel = false" ng-if="exh.page.Todos == true" class="panel panel-default" >
+				<div class="panel-heading">
+					<div class="panel-title">Todos
+					<a href class="check-element pull-right" ng-show="todosPanel" ng-click="removePage('Todos')"><i class="fa fa-trash-o"></i></a>
+					</div>
+				</div>
+				<div class="panel-body">
+					<section id="todoapp" ng-controller="todoController">
+						<header id="todo_header">
+							<form id="todo-form" ng-submit="addTodo()">
+								<input class="todo" id="new-todo" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
 							</form>
-						</li>
-					</ul>
-				</section>
-				<footer id="todo_footer" ng-show="totalCount" ng-cloak>
-					<span id="todo-count"><strong>{{remainingCount}}</strong>
-						<ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
-					</span>
-					<ul id="todo_filters">
-						<li>
-							<a ng-class="{selected: location.path() == '{{urlpath}}/'} " href="#{{urlpath}}/">All</a>
-						</li>
-						<li>
-							<a ng-class="{selected: location.path() == '{{urlpath}}/active'}" href="#{{urlpath}}/active">Active</a>
-						</li>
-						<li>
-							<a ng-class="{selected: location.path() == '{{urlpath}}/completed'}" href="#{{urlpath}}/completed">Completed</a>
-						</li>
-					</ul>
-					<button class="todo" id="todo_clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount">Clear completed ({{completedCount}})</button>
-				</footer>
-			</section>
+						</header>
+						<section id="todo_main" ng-show="totalCount" ng-cloak>
+							<input class="todo" id="todo_toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
+							<label for="todo_toggle-all">Mark all as complete</label>
+							<ul id="todo-list">
+								<li ng-repeat="(id, todo) in todos | todoFilter" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+									<div class="view">
+										<input class="toggle todo" type="checkbox" ng-model="todo.completed" ng-change="todos.$save(id)">
+										<p><label ng-dblclick="editTodo(id)">{{todo.title}}</label></p>
+										<button class="destroy todo" ng-click="removeTodo(id)"></button>
+									</div>
+									<form ng-submit="doneEditing(id)">
+										<input class="edit todo" ng-model="todo.title" todo-escape="revertEditing(id)" todo-blur="doneEditing(id)" todo-focus="todo == editedTodo">
+									</form>
+								</li>
+							</ul>
+						</section>
+						<footer id="todo_footer" ng-show="totalCount" ng-cloak>
+							<span id="todo-count"><strong>{{remainingCount}}</strong>
+								<ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
+							</span>
+							<ul id="todo_filters">
+								<li>
+									<a ng-class="{selected: location.path() == '{{urlpath}}/'} " href="#{{urlpath}}/">All</a>
+								</li>
+								<li>
+									<a ng-class="{selected: location.path() == '{{urlpath}}/active'}" href="#{{urlpath}}/active">Active</a>
+								</li>
+								<li>
+									<a ng-class="{selected: location.path() == '{{urlpath}}/completed'}" href="#{{urlpath}}/completed">Completed</a>
+								</li>
+							</ul>
+							<button class="todo" id="todo_clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount">Clear completed ({{completedCount}})</button>
+						</footer>
+					</section>
+				</div>
 			</div>
 			
 		</div>

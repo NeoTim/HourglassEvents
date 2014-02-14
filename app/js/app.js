@@ -3,7 +3,7 @@
 
 // Declare app level module which depends on filters, and services
 var myApp = angular.module('myApp', [
-      'ngAnimate', 'ngGrid', 'ui.router','ui.sortable', 'firebase', 'myApp.states',
+     'ui.bootstrap', 'ngAnimate', 'ngGrid', 'ui.router','ui.sortable', 'firebase', 'myApp.states',
       'myApp.notes','myApp.config', 'myApp.filters', 'myApp.services',
       'myApp.directives', 'myApp.siteController', 'myApp.todoController',
       'myApp.authController', 'myApp.companies',
@@ -133,12 +133,12 @@ function s4() {
   return Math.floor((1 + Math.random()) * 0x10000)
              .toString(16)
              .substring(1);
-}
+};
 
 function guid() {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
          s4() + '-' + s4() + s4() + s4();
-}
+};
 function registerFirebaseService (name, url) {
 myApp.factory(name, function myService(angularFire) {
       var _ref = new Firebase(url);
@@ -151,7 +151,49 @@ myApp.factory(name, function myService(angularFire) {
         }
       };
   });
-}
+};
 
 registerFirebaseService('itemService','https://hourglass-events.firebaseio.com/');
 
+/*var ModalDemoCtrl = function ($scope, $modal, $log) {
+
+  $scope.items = ['item1', 'item2', 'item3'];
+
+  $scope.open = function () {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'myModalContent.html',
+      controller: ModalInstanceCtrl,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+};
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $modal service used above.
+
+var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
+
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+};*/
