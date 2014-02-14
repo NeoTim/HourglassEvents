@@ -45,10 +45,10 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a data-toggle="offcanvasLarge"><i class="fa fa-arrow-arrow-left"></i></a></li>
-            <li><a ui-sref="dashboard"><i class="fa fa-tachometer"></i></a></li>
-            <li ><a ui-sref="grid"><i class="fa fa-table"></i></a></li>
-            <li ><a ui-sref="companies"><i class="fa fa-group"></i></a></li>
-            <li ><a ui-sref="layout"><i class="fa fa-sitemap"></i></a></li>
+            <li><a ui-sref-active="active" ui-sref="dashboard"><i class="fa fa-tachometer"></i></a></li>
+            <li ><a ui-sref-active="active" ui-sref="grid"><i class="fa fa-table"></i></a></li>
+            <li ><a ui-sref-active="active" ui-sref="companies"><i class="fa fa-group"></i></a></li>
+            <li ><a ui-sref-active="active" ui-sref="layout"><i class="fa fa-sitemap"></i></a></li>
 
           </ul>
         </div><!-- /.nav-collapse -->
@@ -61,10 +61,10 @@
 		<div class="row row-offcanvas row-offcanvas-left">
 			<div class="col-xs-6 col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation" >
 				<div class="list-group" ng-controller="companiesCtrl">
-					<a ui-sref="dashboard" class="list-group-item">Dashboard</a>
-					<a ui-sref="grid" class="list-group-item">SpreadSheet</a>
-					<a ui-sref="companies.list" class="list-group-item">Companies</a>
-					<a ng-repeat="(id, item) in companies | orderByPriority | filter:filterText" ng-href="#/companies/{{item.id}}" class="list-group-item">{{item.company}}</a>
+					<a ui-sref-active="active" ui-sref="dashboard" class="list-group-item">Dashboard</a>
+					<a ui-sref-active="active" ui-sref="grid" class="list-group-item">SpreadSheet</a>
+					<a ui-sref-active="active" ui-sref="companies.list" class="list-group-item">Companies</a>
+					<a  ng-repeat="(id, item) in companies | orderByPriority | filter:filterText" ng-href="#/companies/{{item.id}}" class="list-group-item" ng-class="{active: activetab=='/companies/{{item.id}}'}">{{item.company}}</a>
 				</div>
 			</div><!--/span-->
 			<div class="col-xs-12 col-sm-9 col-md-10">
@@ -93,11 +93,13 @@
     	<script src='https://cdn.firebase.com/v0/firebase.js'></script>
 	<script src='https://cdn.firebase.com/v0/firebase-simple-login.js'></script>
 	<script src='assets/js/underscore.min.js'></script>
+	<script src="assets/angular-file/angular-file-upload-shim.min.js"></script> 
 
 	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js'></script>
 
 	<script src='assets/js/angular/angularfire.js'></script>
 	
+	<script src="assets/angular-file/angular-file-upload.min.js"></script> 
 	<script src='assets/angular-ui/build/angular-ui.min.js'></script>
 	<script src='assets/angular-ui-router/release/angular-ui-router.min.js'></script>
 	<script src='https://rawgithub.com/angular-ui/ui-sortable/master/src/sortable.js'></script>

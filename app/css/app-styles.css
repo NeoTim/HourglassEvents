@@ -324,6 +324,13 @@ ul.group-list .group-list-item span select {
     user-select: none;
 }
 
+
+a.list-group-item.active {
+  background-color: #15aaff;
+  color:#ffffff;
+  border:none;
+}
+
 table.exhibitors tr td input {
   min-width:100px;
 }

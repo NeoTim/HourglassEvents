@@ -32,10 +32,7 @@ var myApp = angular.module('myApp', [
 })
 
 
-
-
-
-.run(['$state', '$stateParams', 'loginService', '$rootScope', 'FBURL', function($state, $stateParams, loginService, $rootScope, FBURL) {
+.run(['$state', '$stateParams', 'loginService', '$rootScope', 'FBURL', '$location', function($state, $stateParams, loginService, $rootScope, FBURL, $location) {
 
        $rootScope.$state = $state;
       $rootScope.$stateParams = $stateParams;
@@ -53,7 +50,10 @@ var myApp = angular.module('myApp', [
           $rootScope.FBURL = FBURL;
       }
 
-     
+     var path = function() { return $location.path()};
+     $rootScope.$watch(path, function(newVal, oldVal){
+       $rootScope.activetab = newVal;
+     });
 
 
   }])
